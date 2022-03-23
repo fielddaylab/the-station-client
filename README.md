@@ -1,6 +1,6 @@
 # The Station
 
-##Installing the tools
+## Installing the tools
 1. Install cocoapods 1.9.3: `sudo gem install cocoapods -v 1.9.3` run `sudo gem uninstall cocoapods` first if you have might have a newer
 2. If you don't have Homebrew, [http://brew.sh/](http://brew.sh/)
 3. `brew install yarn`
@@ -10,7 +10,7 @@
 Note: There is an issue with cocoapods 1.10 and the current version of mapbox. It is known to produce an archive that is not compatible with xcode. The current solution is to run 1.9.3. See 
 https://github.com/react-native-mapbox-gl/maps/issues/1097
 
-##Donwload all the yark dependancies and pods
+## Download all the yark dependancies and pods
 1. Run `make install`.
 2. Run `make` after you make any changes
 
