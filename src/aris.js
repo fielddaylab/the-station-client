@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import update from "immutability-helper";
 import { uploadImage } from "./photos";
 
-const ARIS_URL = "https://fieldday-web.wcer.wisc.edu/stemports/server/";
+const ARIS_URL = "https://thestationmaine.com/server/";
 
 export const Game = class Game {
   constructor(json) {

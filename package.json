@@ -27,7 +27,7 @@
     "react": "16.8.6",
     "react-dom": "^16.8.6",
     "react-infinite-scroller": "^1.2.4",
-    "react-native": "0.60.4",
+    "react-native": "0.60.6",
     "react-native-3d-model-view": "file:./react-native-3d-model-view",
     "react-native-action-sheet": "^2.2.0",
     "react-native-camera": "^3.0.0",
