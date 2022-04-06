@@ -17,7 +17,8 @@ import {
   Platform,
   AppState,
   SafeAreaView,
-  Image
+  Image,
+  // YellowBox
 } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
 import { UploadQueue, deleteQueuedNotes } from "./upload-queue";
@@ -39,6 +40,8 @@ import { SiftrViewPW, downloadGame } from "./siftr-view";
 import { withSuccess } from "./utils";
 
 import { parseUri } from "./parse-uri";
+
+// YellowBox.ignoreAllLogs();//Ignore all log notifications
 
 const recentlyOpened = `${RNFS.DocumentDirectoryPath}/recent.json`;
 const seenComic = `${RNFS.DocumentDirectoryPath}/seencomic.txt`;
