@@ -45,11 +45,11 @@
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* SiftrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiftrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* Station MaineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Station MaineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SiftrTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SiftrTests.m; sourceTree = "<group>"; };
 		135CD54B8D52FAA314FAB615 /* Pods-Siftr-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Siftr-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Siftr-tvOS/Pods-Siftr-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Siftr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Siftr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Station Maine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Station Maine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Siftr/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Siftr/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -57,8 +57,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Siftr/main.m; sourceTree = "<group>"; };
 		1A018109E55151721EE167CC /* libPods-Siftr-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Siftr-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		298A8D2DE4C2AFF9843235C5 /* libPods-SiftrTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SiftrTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E47B1E0B4A5D006451C7 /* Siftr-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Siftr-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* Siftr-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Siftr-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* Station Maine-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Station Maine-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* Station Maine-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Station Maine-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E235574DD039D01E5725A73 /* libPods-Siftr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Siftr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3146BD2CF9C1B8A98DA3F81E /* Pods-SiftrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiftrTests.release.xcconfig"; path = "Target Support Files/Pods-SiftrTests/Pods-SiftrTests.release.xcconfig"; sourceTree = "<group>"; };
 		37A67D08BC9EF7F728E966AD /* libPods-Siftr-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Siftr-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,10 +196,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Siftr.app */,
-				00E356EE1AD99517003FC87E /* SiftrTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* Siftr-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* Siftr-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Station Maine.app */,
+				00E356EE1AD99517003FC87E /* Station MaineTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* Station Maine-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* Station Maine-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,9 +222,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* SiftrTests */ = {
+		00E356ED1AD99517003FC87E /* Station MaineTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SiftrTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Station MaineTests" */;
 			buildPhases = (
 				D1D6FD2839A8C3DAA5C3DE33 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -236,14 +236,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = SiftrTests;
+			name = "Station MaineTests";
 			productName = SiftrTests;
-			productReference = 00E356EE1AD99517003FC87E /* SiftrTests.xctest */;
+			productReference = 00E356EE1AD99517003FC87E /* Station MaineTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Siftr */ = {
+		13B07F861A680F5B00A75B9A /* Station Maine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Siftr" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Station Maine" */;
 			buildPhases = (
 				7B9D49EC5DE3BC99A8D36D08 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -258,14 +258,14 @@
 			);
 			dependencies = (
 			);
-			name = Siftr;
+			name = "Station Maine";
 			productName = Siftr;
-			productReference = 13B07F961A680F5B00A75B9A /* Siftr.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Station Maine.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* Siftr-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* Station Maine-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Siftr-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Station Maine-tvOS" */;
 			buildPhases = (
 				CB3A5619EA96FFDC982D3716 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -278,14 +278,14 @@
 			);
 			dependencies = (
 			);
-			name = "Siftr-tvOS";
+			name = "Station Maine-tvOS";
 			productName = "Siftr-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* Siftr-tvOS.app */;
+			productReference = 2D02E47B1E0B4A5D006451C7 /* Station Maine-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* Siftr-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* Station Maine-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Siftr-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Station Maine-tvOSTests" */;
 			buildPhases = (
 				66FFD7839EF54D612E35B1F9 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -297,9 +297,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "Siftr-tvOSTests";
+			name = "Station Maine-tvOSTests";
 			productName = "Siftr-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* Siftr-tvOSTests.xctest */;
+			productReference = 2D02E4901E0B4A5D006451C7 /* Station Maine-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -331,7 +331,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Siftr" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Station Maine" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -345,10 +345,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Siftr */,
-				00E356ED1AD99517003FC87E /* SiftrTests */,
-				2D02E47A1E0B4A5D006451C7 /* Siftr-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* Siftr-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* Station Maine */,
+				00E356ED1AD99517003FC87E /* Station MaineTests */,
+				2D02E47A1E0B4A5D006451C7 /* Station Maine-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* Station Maine-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -642,12 +642,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Siftr */;
+			target = 13B07F861A680F5B00A75B9A /* Station Maine */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* Siftr-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* Station Maine-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -685,7 +685,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Siftr.app/Siftr";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Station Maine.app/Station Maine";
 			};
 			name = Debug;
 		};
@@ -706,7 +706,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Siftr.app/Siftr";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Station Maine.app/Station Maine";
 			};
 			name = Release;
 		};
@@ -729,7 +729,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.mmsa.thestationmaine;
-				PRODUCT_NAME = Siftr;
+				PRODUCT_NAME = "Station Maine";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -753,7 +753,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.mmsa.thestationmaine;
-				PRODUCT_NAME = Siftr;
+				PRODUCT_NAME = "Station Maine";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -837,7 +837,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Siftr-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Siftr-tvOS.app/Siftr-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Station Maine-tvOS.app/Station Maine-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
@@ -864,7 +864,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Siftr-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Siftr-tvOS.app/Siftr-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Station Maine-tvOS.app/Station Maine-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -971,7 +971,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SiftrTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Station MaineTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -980,7 +980,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Siftr" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Station Maine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -989,7 +989,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Siftr-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Station Maine-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -998,7 +998,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Siftr-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Station Maine-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1007,7 +1007,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Siftr" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Station Maine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
