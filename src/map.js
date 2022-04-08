@@ -30,6 +30,7 @@ import {
 } from './aris';
 
 import TestStyle from './mapbox-style.json';
+import { MAP_PITCH } from './constants';
 
 const toWord8 = function(n) {
   let s = n.toString(16);
@@ -334,7 +335,7 @@ export class SiftrMap extends React.Component {
               parseFloat(this.props.location.coords.longitude),
               parseFloat(this.props.location.coords.latitude),
             ],
-            pitch: 60,
+            pitch: MAP_PITCH,
             zoomLevel: prevProps.showStops ? 22 : undefined,
             animationDuration: 300,
           });
@@ -395,7 +396,7 @@ export class SiftrMap extends React.Component {
             parseFloat(this.props.location.coords.longitude),
             parseFloat(this.props.location.coords.latitude),
           ]),
-          pitch: 60,
+          pitch: MAP_PITCH,
         }}
         animationDuration={300}
         centerCoordinate={this.props.showStops ? undefined
@@ -407,8 +408,8 @@ export class SiftrMap extends React.Component {
         }
         followUserLocation={!(this.props.showStops || this.props.warp)}
         followUserMode={this.props.trackDirection ? 'compass' : 'normal'}
-        pitch={this.props.showStops ? 0 : 60}
-        followPitch={60}
+        pitch={this.props.showStops ? 0 : MAP_PITCH}
+        followPitch={MAP_PITCH}
         followZoomLevel={22}
       />
       <MapboxGL.Style

@@ -1,0 +1,1 @@
+export const MAP_PITCH = 60;

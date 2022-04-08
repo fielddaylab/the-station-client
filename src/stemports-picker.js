@@ -29,6 +29,7 @@ import MapboxGL from "@react-native-mapbox-gl/maps";
 import ModelView from '../react-native-3d-model-view/lib/ModelView';
 import TestStyle from './mapbox-style.json';
 import analytics from '@react-native-firebase/analytics';
+import { MAP_PITCH } from "./constants";
 
 MapboxGL.setAccessToken("pk.eyJ1IjoiZmllbGRkYXlsYWIiLCJhIjoiY2s3ejh3cHNrMDNtMTNlcnk2dmxnZzhidyJ9.-Kt-a2vKYZ49CjY_no1P9A");
 
@@ -1127,13 +1128,13 @@ export class StemportsPicker extends React.Component {
                     parseFloat(this.props.location.coords.longitude),
                     parseFloat(this.props.location.coords.latitude),
                   ]),
-                  pitch: 60,
+                  pitch: MAP_PITCH,
                 }}
-                pitch={60}
+                pitch={MAP_PITCH}
                 animationDuration={300}
                 followUserLocation={true}
                 followUserMode="normal"
-                followPitch={60}
+                followPitch={MAP_PITCH}
                 followZoomLevel={22}
               />
               {
