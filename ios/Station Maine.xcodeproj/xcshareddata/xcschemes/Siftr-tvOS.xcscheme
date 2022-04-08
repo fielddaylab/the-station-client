@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "Siftr-tvOS.app"
+               BuildableName = "Station Maine-tvOS.app"
                BlueprintName = "Station Maine-tvOS"
                ReferencedContainer = "container:Station Maine.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "Siftr-tvOSTests.xctest"
+               BuildableName = "Station Maine-tvOSTests.xctest"
                BlueprintName = "Station Maine-tvOSTests"
                ReferencedContainer = "container:Station Maine.xcodeproj">
             </BuildableReference>
@@ -59,7 +59,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "Siftr-tvOS.app"
+            BuildableName = "Station Maine-tvOS.app"
             BlueprintName = "Station Maine-tvOS"
             ReferencedContainer = "container:Station Maine.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "Siftr-tvOSTests.xctest"
+               BuildableName = "Station Maine-tvOSTests.xctest"
                BlueprintName = "Station Maine-tvOSTests"
                ReferencedContainer = "container:Station Maine.xcodeproj">
             </BuildableReference>
@@ -92,7 +92,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "Siftr-tvOS.app"
+            BuildableName = "Station Maine-tvOS.app"
             BlueprintName = "Station Maine-tvOS"
             ReferencedContainer = "container:Station Maine.xcodeproj">
          </BuildableReference>
@@ -109,7 +109,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "Siftr-tvOS.app"
+            BuildableName = "Station Maine-tvOS.app"
             BlueprintName = "Station Maine-tvOS"
             ReferencedContainer = "container:Station Maine.xcodeproj">
          </BuildableReference>
