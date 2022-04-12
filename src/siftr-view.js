@@ -3142,6 +3142,7 @@ export const SiftrView = createClass({
                     )
                   : this.renderMap()
               }
+
               {
                 !this.state.showStops && (
                   <Image pointerEvents="none" style={{
@@ -3154,6 +3155,7 @@ export const SiftrView = createClass({
                   }} source={require('../web/assets/img/horizon-fade.png')} />
                 )
               }
+
               <GuideLine
                 style={{
                   flexDirection: 'column',
@@ -3185,6 +3187,8 @@ export const SiftrView = createClass({
                 })()}
                 auth={this.props.auth}
               />
+
+              {/* right side panel */}
               <View style={{
                 position: 'absolute',
                 top: 125,
@@ -3217,7 +3221,7 @@ export const SiftrView = createClass({
                     {snacksCount}
                   </Text>
                 </View>
-                {
+                { // puffin snack related
                   snacksCount === 0 ? (
                     <View style={{
                       backgroundColor: 'white',
@@ -3266,11 +3270,16 @@ export const SiftrView = createClass({
                     </TouchableOpacity>
                   )
                 }
+
+                {/* spacer  */}
                 <View style={{
                   backgroundColor: 'white',
                   width: 75,
                   height: 2,
                 }} />
+
+                {/* map options  */}
+                {/* toggle show stops  */}
                 <TouchableOpacity onPress={() => {
                   this.setState({showStops: !this.state.showStops});
                 }} style={{
@@ -3286,6 +3295,8 @@ export const SiftrView = createClass({
                     marginBottom: -25,
                   }} />
                 </TouchableOpacity>
+
+                {/* toggle map pitch */}
                 <TouchableOpacity onPress={() => {
                   this.setState({trackDirection: !this.state.trackDirection});
                 }} style={{
@@ -3297,6 +3308,8 @@ export const SiftrView = createClass({
                   }} />
                 </TouchableOpacity>
               </View>
+
+
               {
                 !this.state.showStops && this.state.circleRange && (
                   <Image pointerEvents="none" style={{
@@ -3310,6 +3323,7 @@ export const SiftrView = createClass({
                   }} source={require('../web/assets/img/pickup-radius.png')} />
                 )
               }
+
               {
                 !(this.state.showStops) && (
                   <View pointerEvents="box-none" style={{
@@ -3384,8 +3398,10 @@ export const SiftrView = createClass({
                   </View>
                 )
               }
+
               {this.renderNoteView()}
               {this.renderCreateNote()}
+
               {
                 this.state.modals.length > 0
                 && !(this.state.viewingNote)

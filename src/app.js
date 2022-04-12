@@ -146,9 +146,10 @@ export var SiftrNative = createClass({
           // do nothing; we need to pass this to avoid
           // https://github.com/facebook/react-native/issues/9490#issuecomment-271974881
         }, {
+          timeout: 1000,
           enableHighAccuracy: true,
           maximumAge: 0,
-          distanceFilter: 0,
+          distanceFilter: 10,
           useSignificantChanges: false,
         });
       }
