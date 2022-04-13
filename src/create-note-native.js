@@ -3,19 +3,14 @@
 import React from "react";
 import T from "prop-types";
 import update from "immutability-helper";
-import { Map, Set } from "immutable";
 import createClass from "create-react-class";
 import analytics from '@react-native-firebase/analytics';
 import {
   Image,
   View,
   TextInput,
-  Picker,
   TouchableOpacity,
-  ActivityIndicator,
   ScrollView,
-  Switch,
-  Linking,
   BackHandler,
   CameraRoll,
   ListView,
@@ -23,7 +18,6 @@ import {
   Keyboard,
   Alert,
   Animated,
-  Slider,
   ImageBackground,
   Modal,
   SafeAreaView,
@@ -32,12 +26,9 @@ import {
 import { styles, Text } from "./styles";
 import { RNCamera } from "react-native-camera";
 import InfiniteScrollView from "react-native-infinite-scroll-view";
-import firebase from "react-native-firebase";
 import Geocoder from "react-native-geocoder";
 import Permissions from "react-native-permissions";
-import { Auth, Game, Tag, Field, FieldData, FieldOption } from "./aris";
-import { requestImage } from "./photos";
-import { groupBy } from "./items";
+import { Game, Field, FieldData } from "./aris";
 import {CacheMedia} from './media';
 import {ItemScreen} from './items';
 import {GuideLine} from './stemports-picker';

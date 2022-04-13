@@ -2,9 +2,7 @@
 
 import ImagePicker from 'react-native-image-picker';
 import {Platform} from 'react-native';
-import {withSuccess} from './utils';
-import EXIF from 'exif-js';
-
+import { withSuccess } from './utils';
 
 export function requestImage(onlyGallery, cb) {
   ImagePicker[onlyGallery ? 'launchImageLibrary' : 'showImagePicker']({

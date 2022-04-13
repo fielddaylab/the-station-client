@@ -14,15 +14,14 @@ import {
   Linking,
   ImageBackground
 } from "react-native";
-import { styles, Text, FixedMarkdown } from "./styles";
+import { Text, FixedMarkdown } from "./styles";
 import {deserializeGame} from "./aris";
-import {loadMedia, CacheMedia} from "./media";
-import { StatusSpace } from "./status-space";
+import { loadMedia, CacheMedia } from "./media";
 import { StemportsPlayer } from "./stemports-player";
 import {saveInventoryZero} from './siftr-view';
 import {loadQueue, uploadNote} from './upload-queue';
 import {getQuestProgress} from './quests';
-import {maxPickupDistance, meterDistance} from './map';
+import { meterDistance } from './map';
 import { ComicView } from './stemports-player';
 import { globalstyles } from "./global-styles";
 import MapboxGL from "@react-native-mapbox-gl/maps";

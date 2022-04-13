@@ -1,15 +1,12 @@
 "use strict";
 
 import React from "react";
-import T from "prop-types";
 import createClass from "create-react-class";
 import update from "immutability-helper";
 import {
   View,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   Image,
-  Linking,
   ActivityIndicator,
   ScrollView,
   Modal,
@@ -18,16 +15,11 @@ import {
   SafeAreaView
 } from "react-native";
 import ActionSheet from 'react-native-action-sheet';
-import { styles, Text } from "./styles";
+import { Text } from "./styles";
 import { StatusSpace } from "./status-space";
 import {
   BrowserSearchPane,
-  BrowserMine,
   BrowserFollowed,
-  BrowserDownloaded,
-  BrowserFeatured,
-  BrowserPopular,
-  BrowserNearMe,
   NativeCard,
   ExplorePane
 } from "./native-browser";

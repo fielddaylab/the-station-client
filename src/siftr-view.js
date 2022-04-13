@@ -1,7 +1,5 @@
 "use strict";
 
-var ref, ref1;
-
 const modulo = function(a, b) {
   return ((+a % (b = +b)) + b) % b;
 };
@@ -20,7 +18,6 @@ import {
   BackHandler,
   Modal,
   ScrollView,
-  TouchableWithoutFeedback,
   Keyboard,
   Platform,
   SafeAreaView,
@@ -30,7 +27,7 @@ import {
   Animated
 } from "react-native";
 const RNFS = require("react-native-fs");
-import { styles, Text } from "./styles";
+import { Text } from "./styles";
 import { StatusSpace } from "./status-space";
 import analytics from '@react-native-firebase/analytics';
 import { NativeSettings } from "./native-settings";
@@ -57,7 +54,6 @@ import {
   Colors,
   Field,
   Theme,
-  User,
   deserializeNote,
   arisPromise
 } from "./aris";

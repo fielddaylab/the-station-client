@@ -5,7 +5,7 @@ import {Platform} from 'react-native';
 import RNFS from 'react-native-fs';
 import update from "immutability-helper";
 
-import {Auth, arisHTTPS} from './aris';
+import { arisHTTPS } from './aris';
 import {withSuccess} from './utils';
 
 const mediaDir = `${RNFS.DocumentDirectoryPath}/media`;

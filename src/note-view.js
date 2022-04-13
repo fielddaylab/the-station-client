@@ -18,10 +18,8 @@ import {
   BackHandler,
   Modal,
   TouchableWithoutFeedback,
-  Platform,
   SafeAreaView
 } from "react-native";
-import FitImage from "react-native-fit-image";
 import Hyperlink from "react-native-hyperlink";
 import Gallery from "react-native-image-gallery";
 import { styles, Text } from "./styles";

@@ -1,12 +1,11 @@
 'use strict';
 
 import React from 'react';
-import T from 'prop-types';
 import
 { View
 , TouchableOpacity
 } from 'react-native';
-import {styles, Text} from './styles';
+import { Text } from './styles';
 import Hyperlink from 'react-native-hyperlink';
 
 export class Terms extends React.Component {

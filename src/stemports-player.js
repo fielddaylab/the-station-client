@@ -6,22 +6,16 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  Modal,
   Image,
-  SafeAreaView,
   ImageBackground,
-  TouchableWithoutFeedback,
   Alert
 } from "react-native";
-import { styles, Text, hypher } from "./styles";
+import { Text, hypher } from "./styles";
 import { globalstyles } from "./global-styles";
-import {loadMedia, CacheMedia} from "./media";
-import { StatusSpace } from "./status-space";
 import { StemportsPicker } from "./stemports-picker";
 import { NativeSettings } from "./native-settings";
 import { deserializeGame } from "./aris";
 import { PhotoImages, PhotoItemIDs } from "./items";
-import ModelView from '../react-native-3d-model-view/lib/ModelView';
 import SideMenu from 'react-native-side-menu-updated';
 import analytics from '@react-native-firebase/analytics';
 

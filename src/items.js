@@ -16,7 +16,6 @@ import {
 import {CacheMedia, CacheMedias} from './media';
 import {WebView} from 'react-native-webview';
 import ModelView from '../react-native-3d-model-view/lib/ModelView';
-import update from "immutability-helper";
 import {SiftrThumbnails} from './thumbnails';
 import {SquareImage, GalleryModal} from './note-view';
 import {Text, FixedMarkdown, hypher} from './styles';

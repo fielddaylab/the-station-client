@@ -8,12 +8,8 @@ import {
 , Image
 , ImageBackground
 } from 'react-native';
-import {
-  FullWidthWebView
-, webViewBoilerplate
-} from './items';
-import {CacheMedia, CacheMedias} from './media';
-import {ItemScreen, CacheContents} from './items';
+import { CacheMedias } from './media';
+import { CacheContents } from './items';
 import {FixedMarkdown, Text} from './styles';
 import {SquareImage, GalleryModal} from './note-view';
 import { globalstyles } from "./global-styles";

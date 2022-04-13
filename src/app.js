@@ -3,32 +3,23 @@
 var ref1;
 
 import React from "react";
-import T from "prop-types";
 import createClass from "create-react-class";
-import update from "immutability-helper";
 
 import {
-  View,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
   Linking,
   BackHandler,
-  Platform,
   AppState,
   SafeAreaView,
-  Image,
   // YellowBox
 } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
 import { UploadQueue, deleteQueuedNotes } from "./upload-queue";
-import { styles, Text } from "./styles";
 import { Terms } from "./native-terms";
 import RNFS from "react-native-fs";
 import analytics from '@react-native-firebase/analytics';
 import Permissions from "react-native-permissions";
 import { NativeLogin } from "./native-login";
-import { NativeHome, Loading } from "./native-home";
+import { Loading } from "./native-home";
 import Orientation from 'react-native-orientation-locker';
 import Geolocation from '@react-native-community/geolocation';
 import { StemportsPicker } from './stemports-picker';

@@ -1,7 +1,6 @@
 "use strict";
 
 import React from "react";
-import T from "prop-types";
 import createClass from "create-react-class";
 import {
   View,

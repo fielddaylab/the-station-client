@@ -2,32 +2,13 @@
 
 import React from 'react';
 import T from 'prop-types';
-import update from 'immutability-helper';
 
-import {
-  Text
-, View
-, Platform
-, Image
-, ImageBackground
-, Dimensions
-} from 'react-native';
-import {styles} from './styles';
-import Svg, {
-  Path
-, Circle
-, Text as SvgText
-} from 'react-native-svg';
+import { View, Image, Dimensions } from 'react-native';
 import {CacheMedia} from './media';
 import MapboxGL from "@react-native-mapbox-gl/maps";
 import ModelView from '../react-native-3d-model-view/lib/ModelView';
 
-import {fitBounds} from 'google-map-react/utils';
-
-import {
-  Note
-, Colors
-} from './aris';
+import { Note } from './aris';
 
 import TestStyle from './mapbox-style.json';
 import { MAP_PITCH } from './constants';
@@ -487,7 +468,9 @@ export class SiftrMap extends React.Component {
                 autoPlay={true}
                 camera={{
                   position: {
-                    x: Math.sin(headingRadians) * -2, y: 0.9, z: Math.cos(headingRadians) * 2,
+                    x: Math.sin(headingRadians) * -2,
+                    y: 0.9,
+                    z: Math.cos(headingRadians) * 2,
                   },
                   lookAt: {
                     x: 0, y: 0.8, z: 0,

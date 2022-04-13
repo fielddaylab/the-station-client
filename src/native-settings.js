@@ -1,7 +1,6 @@
 "use strict";
 
 import React from "react";
-import T from "prop-types";
 import createClass from "create-react-class";
 import {
   View,
@@ -9,17 +8,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  ImageBackground,
   Linking,
-  ActivityIndicator,
-  StatusBar,
   BackHandler,
-  Platform,
-  AppState,
-  Keyboard,
-  TouchableWithoutFeedback,
-  Alert,
-  Dimensions
 } from "react-native";
 import { styles, Text } from "./styles";
 import { StatusSpace } from "./status-space";

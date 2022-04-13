@@ -7,12 +7,11 @@ import update from 'immutability-helper';
 import
 { TouchableOpacity
 , View
-, ScrollView
-, StyleSheet
+  , ScrollView
 , TextInput
 , Switch
 } from 'react-native';
-import {styles, Text} from './styles';
+import { Text } from './styles';
 
 import
 { Auth

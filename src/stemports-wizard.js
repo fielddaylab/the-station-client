@@ -1,17 +1,14 @@
 "use strict";
 
 import React from "react";
-import update from "immutability-helper";
 import {CacheMedia} from './media';
 import {
   View,
   TouchableOpacity,
   ScrollView,
   Image,
-  SafeAreaView
 } from "react-native";
-import { styles, Text, FixedMarkdown } from "./styles";
-import { GuideLine } from "./stemports-picker";
+import { Text, FixedMarkdown } from "./styles";
 
 const WizardLines = [
   {
