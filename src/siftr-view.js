@@ -1334,7 +1334,7 @@ export const SiftrView = createClass({
     Keyboard.removeListener("keyboardWillShow", this.keyboardShow);
     Keyboard.removeListener("keyboardWillHide", this.keyboardHide);
   },
-  componentWillReceiveProps: function(nextProps) {
+  UNSAFE_componentWillReceiveProps: function (nextProps) {
     var newAuth, newGame, ref, ref1;
     newAuth = null;
     newGame = null;
@@ -3227,7 +3227,8 @@ export const SiftrView = createClass({
                       marginBottom: 10,
                       opacity: 0.4,
                     }}>
-                      <Text style={{
+                      <Text
+                        style={{
                         color: 'black',
                         fontSize: 13,
                         fontFamily: 'LeagueSpartan-Medium',

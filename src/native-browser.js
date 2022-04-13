@@ -642,7 +642,7 @@ const makeBrowser = (getGames) => createClass({
       this.state.games !== nextState.games ||
       this.props.cardMode !== nextProps.cardMode;
   },
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function (newProps) {
     if ((this.props.auth == null) || ['auth', 'search', 'mine', 'followed'].some((x) => {
       return this.props[x] !== newProps[x];
     })) {

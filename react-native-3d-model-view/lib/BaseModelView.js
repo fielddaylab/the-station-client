@@ -21,7 +21,7 @@ class BaseModelView extends React.Component {
     this.loadModel(this.props)
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     if (newProps.source.zip !== this.props.source.zip ||
       newProps.source.model !== this.props.source.model ||
       newProps.source.texture !== this.props.source.texture) {

@@ -10,7 +10,9 @@ import {
   BackHandler,
   AppState,
   SafeAreaView,
-  // YellowBox
+  // YellowBox,
+  Alert,
+  Text
 } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
 import { UploadQueue, deleteQueuedNotes } from "./upload-queue";
@@ -37,6 +39,9 @@ import { parseUri } from "./parse-uri";
 const recentlyOpened = `${RNFS.DocumentDirectoryPath}/recent.json`;
 const seenComic = `${RNFS.DocumentDirectoryPath}/seencomic.txt`;
 const seenWizard = `${RNFS.DocumentDirectoryPath}/seenwizard.txt`;
+
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
 
 export var SiftrNative = createClass({
   displayName: "SiftrNative",
@@ -132,6 +137,24 @@ export var SiftrNative = createClass({
     Permissions.request('location').then(response => {
       if (response === 'authorized') {
         this.watchID = Geolocation.watchPosition((loc) => {
+
+
+          // if (true)
+          Alert.alert(
+            "DEBUG",
+            loc,
+            `Lat:${Number.parseFloat(loc.coords.latitude).toFixed(5)} 
+Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+          )
+
           this.setState({location: loc});
         }, (err) => {
           // do nothing; we need to pass this to avoid
@@ -139,7 +162,7 @@ export var SiftrNative = createClass({
         }, {
           timeout: 1000,
           enableHighAccuracy: true,
-          maximumAge: 0,
+          maximumAge: 1000,
           distanceFilter: 10,
           useSignificantChanges: false,
         });
@@ -149,8 +172,8 @@ export var SiftrNative = createClass({
   },
   componentWillUnmount: function() {
     this.removeNetInfo && this.removeNetInfo();
-    Linking.removeEventListener("url", this.urlHandler);
-    AppState.removeEventListener("change", this.withAppState);
+    Linking.remove("url", this.urlHandler);
+    AppState.remove("change", this.withAppState);
     if (this.hardwareBack != null) {
       BackHandler.removeEventListener(
         "hardwareBackPress",

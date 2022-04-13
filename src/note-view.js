@@ -342,7 +342,7 @@ const SiftrComment = function() {
       this.getUserMedia();
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
       if (nextProps.comment.user.user_id !== this.props.comment.user.user_id) {
         this.getUserMedia();
       }
@@ -668,7 +668,7 @@ export const SiftrNoteView = function() {
       BackHandler.removeEventListener("hardwareBackPress", this.hardwareBack);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
       if (this.props.note.note_id !== nextProps.note.note_id) {
         this.setState({
           comments: null

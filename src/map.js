@@ -3,7 +3,7 @@
 import React from 'react';
 import T from 'prop-types';
 
-import { View, Image, Dimensions } from 'react-native';
+import { View, Image, Dimensions, Alert } from 'react-native';
 import {CacheMedia} from './media';
 import MapboxGL from "@react-native-mapbox-gl/maps";
 import ModelView from '../react-native-3d-model-view/lib/ModelView';
@@ -205,7 +205,7 @@ export class SiftrMap extends React.Component {
     this.state = {
       isMapReady: false,
       legendOpen: false,
-      heading: 0,
+      heading: 180, 
     };
   }
 
@@ -365,7 +365,19 @@ export class SiftrMap extends React.Component {
         this.props.onPress({latitude, longitude});
       }}
       onRegionIsChanging={e => {
-        this.setState({heading: e.properties.heading});
+
+        // Alert.alert(
+        //   "Alert Title",
+        //   e.properties,
+        //   [
+        //     {
+        //       text: "Cancel",
+        //       onPress: () => console.log("Cancel Pressed"),
+        //       style: "cancel"
+        //     },
+        //     { text: "OK", onPress: () => console.log("OK Pressed") }
+        //   ])
+        // this.setState({heading: e.properties.heading});
       }}
       compassEnabled={false}
     >

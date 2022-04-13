@@ -209,7 +209,7 @@ class NativeHomeNew extends React.Component {
     this.getThemes();
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     if (newProps.screen == null
         && this.props.followed == null
         && newProps.followed != null
