@@ -139,7 +139,7 @@ export var SiftrNative = createClass({
         this.watchID = Geolocation.watchPosition((loc) => {
 
 
-          // if (true)
+          if (!true)
           Alert.alert(
             "DEBUG",
             loc,

@@ -1122,7 +1122,7 @@ export class StemportsPicker extends React.Component {
             >
               <MapboxGL.Camera
                 defaultSettings={{
-                  zoomLevel: 22,
+                  zoomLevel: 20,
                   centerCoordinate: (this.props.location && [
                     parseFloat(this.props.location.coords.longitude),
                     parseFloat(this.props.location.coords.latitude),
@@ -1134,7 +1134,7 @@ export class StemportsPicker extends React.Component {
                 followUserLocation={true}
                 followUserMode="normal"
                 followPitch={MAP_PITCH}
-                followZoomLevel={22}
+                followZoomLevel={20}
               />
               {
                 !this.props.viewComic && gameList.map(o =>
@@ -1209,7 +1209,7 @@ export class StemportsPicker extends React.Component {
                 )
               }
               <MapboxGL.UserLocation
-                visible={true}
+                visible={false}
               />
               <MapboxGL.Style
                 json={TestStyle}
