@@ -678,7 +678,7 @@ export const SiftrView = createClass({
     // nomenData
     clearNomenData: T.func,
     online: T.bool,
-    aris: T.bool
+    aris: T.bool,
   },
   getDefaultProps: function() {
     return {
@@ -690,7 +690,7 @@ export const SiftrView = createClass({
       following: null,
       followGame: function() {},
       unfollowGame: function() {},
-      onViolaIdentify: function() {}
+      onViolaIdentify: function () { },
     };
   },
   getInitialState: function() {
@@ -778,6 +778,7 @@ export const SiftrView = createClass({
       guideMentionedXP: false,
       warp: parseInt(this.props.game.game_id) === 100058,
       chipAnimation: new Animated.Value(0),
+      trackDirection: true,
     };
   },
   getAllNotes: function(cb) {

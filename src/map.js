@@ -384,7 +384,7 @@ export class SiftrMap extends React.Component {
       <MapboxGL.Camera
         ref={r => (this.theMapCamera = r)}
         defaultSettings={{
-          zoomLevel: 22,
+          zoomLevel: 20,
           centerCoordinate: (this.props.location && [
             parseFloat(this.props.location.coords.longitude),
             parseFloat(this.props.location.coords.latitude),
@@ -403,7 +403,7 @@ export class SiftrMap extends React.Component {
         followUserMode={this.props.trackDirection ? 'compass' : 'normal'}
         pitch={this.props.showStops ? 0 : MAP_PITCH}
         followPitch={MAP_PITCH}
-        followZoomLevel={22}
+        followZoomLevel={20}
       />
       <MapboxGL.Style
         json={TestStyle}
@@ -451,7 +451,8 @@ export class SiftrMap extends React.Component {
         })
       }
       <MapboxGL.UserLocation
-        visible={!this.props.showStops}
+        // visible={!this.props.showStops}
+        visible={false}
       />
     </MapboxGL.MapView>
     {
