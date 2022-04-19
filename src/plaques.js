@@ -41,13 +41,13 @@ export class PlaqueScreen extends React.Component {
           auth={this.props.auth}
           onClose={this.props.onClose}
           addChip={this.props.addChip}
-          selectPhoto={this.props.selectPhoto}
-          givePhoto={this.props.givePhoto}
-          giveSnack={this.props.giveSnack}
+          // selectPhoto={this.props.selectPhoto}
+          // givePhoto={this.props.givePhoto}
+          // giveSnack={this.props.giveSnack}
           onPickUp={(event) => {
             this.props.onPickup([event]);
           }}
-          selectSnack={this.props.selectSnack}
+          // selectSnack={this.props.selectSnack}
         />
       );
     }

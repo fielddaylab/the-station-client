@@ -3,7 +3,7 @@
 import React from 'react';
 import T from 'prop-types';
 
-import { View, Image, Dimensions, Alert } from 'react-native';
+import { View, Image, Dimensions, Alert, Text } from 'react-native';
 import {CacheMedia} from './media';
 import MapboxGL from "@react-native-mapbox-gl/maps";
 import ModelView from '../react-native-3d-model-view/lib/ModelView';
@@ -11,7 +11,7 @@ import ModelView from '../react-native-3d-model-view/lib/ModelView';
 import { Note } from './aris';
 
 import TestStyle from './mapbox-style.json';
-import { MAP_PITCH } from './constants';
+import { CAMERA_ANIMATION_DURATION, MAP_PITCH, ZOOM_LEVEL } from './config';
 
 const toWord8 = function(n) {
   let s = n.toString(16);
@@ -169,8 +169,6 @@ class SmartMarker extends React.Component {
   }
 }
 
-export const maxPickupDistance = 10; // meters
-
 export function meterDistance(posn1, posn2) {
   // Haversine formula code from https://stackoverflow.com/a/14561433/509936
 
@@ -268,7 +266,9 @@ export class SiftrMap extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // if switched to bird eye view
     if (this.props.showStops && !prevProps.showStops) {
+      // update trigger
       const allCoordinates = this.props.triggers.map((trigger) => {
         const inst = this.props.instances.find(inst => parseInt(inst.instance_id) === parseInt(trigger.instance_id));
         if (!inst) return;
@@ -284,14 +284,8 @@ export class SiftrMap extends React.Component {
       let maxLatitude = Math.max(...(allCoordinates.map(x => x.latitude)));
       let minLongitude = Math.min(...(allCoordinates.map(x => x.longitude)));
       let maxLongitude = Math.max(...(allCoordinates.map(x => x.longitude)));
-      // if (minLatitude === maxLatitude) {
-      //   minLatitude -= 0.01;
-      //   maxLatitude += 0.01;
-      // }
-      // if (minLongitude === maxLongitude) {
-      //   minLongitude -= 0.01;
-      //   maxLongitude += 0.01;
-      // }
+
+      // define bounding box
       const stopBounds = {
         ne: [maxLongitude, maxLatitude],
         sw: [minLongitude, minLatitude],
@@ -303,22 +297,34 @@ export class SiftrMap extends React.Component {
 
       this.theMapCamera.setCamera({
         bounds: stopBounds,
+        // pitch: this.props.showStops ? 0 : MAP_PITCH,
         pitch: 0,
         heading: 0,
         minZoomLevel: 0,
-        animationDuration: 300,
+        animationDuration: CAMERA_ANIMATION_DURATION,
       });
-    } else if (this.props.warp && !this.props.showStops) {
+    }
+    else if (!this.props.showStops && prevProps.showStops && this.props.trackDirection) {
+      this.theMapCamera.setCamera({
+        pitch: MAP_PITCH,
+        heading: 0,
+        minZoomLevel: 0,
+        animationDuration: CAMERA_ANIMATION_DURATION,
+      });
+    }
+    // if in warp mode but not bird eye view
+    else if (this.props.warp && !this.props.showStops) {
       const tryWarp = () => {
+        // Alert.alert('try warp')
         if (this.theMapCamera) {
           this.theMapCamera.setCamera({
             centerCoordinate: [
               parseFloat(this.props.location.coords.longitude),
               parseFloat(this.props.location.coords.latitude),
             ],
-            pitch: MAP_PITCH,
-            zoomLevel: prevProps.showStops ? 22 : undefined,
-            animationDuration: 300,
+            pitch: 0,
+            zoomLevel: prevProps.showStops ? ZOOM_LEVEL : undefined,
+            animationDuration: CAMERA_ANIMATION_DURATION,
           });
         } else {
           setTimeout(tryWarp, 100);
@@ -345,7 +351,21 @@ export class SiftrMap extends React.Component {
     if (!this.props.theme) return null; // wait for theme to load
     const {height, width} = Dimensions.get('window');
     const headingRadians = this.state.heading * (Math.PI / 180);
-    return <React.Fragment><MapboxGL.MapView
+    return <React.Fragment>
+
+      <View
+        style={{
+          position: 'absolute',
+          top: 10,
+          right: 10,
+          zIndex: 10,
+        }}>
+        <Text>{this.state.heading.toFixed(2)}</Text>
+        <Text>Debug</Text>
+      </View>
+
+
+      <MapboxGL.MapView
       ref={r => (this.theMapView = r)}
       onLayout={this.props.onLayout}
       style={{
@@ -355,9 +375,11 @@ export class SiftrMap extends React.Component {
         left: 0,
         right: 0,
       }}
-      zoomEnabled={!this.props.showStops}
+        zoomEnabled={!this.props.showStops}
+        // zoomEnabled={false}
       scrollEnabled={false}
-      rotateEnabled={!this.props.showStops}
+        // rotateEnabled={!this.props.showStops}
+        rotateEnabled={!this.props.trackDirection && !this.props.showStops}
       pitchEnabled={false}
       contentInset={[height * 0.45, 0, 0, 0]}
       onPress={e => {
@@ -365,33 +387,22 @@ export class SiftrMap extends React.Component {
         this.props.onPress({latitude, longitude});
       }}
       onRegionIsChanging={e => {
-
-        // Alert.alert(
-        //   "Alert Title",
-        //   e.properties,
-        //   [
-        //     {
-        //       text: "Cancel",
-        //       onPress: () => console.log("Cancel Pressed"),
-        //       style: "cancel"
-        //     },
-        //     { text: "OK", onPress: () => console.log("OK Pressed") }
-        //   ])
-        // this.setState({heading: e.properties.heading});
+        // Alert.alert(e.properties)
+        // this.setState({ heading: e.properties.heading });
       }}
       compassEnabled={false}
     >
       <MapboxGL.Camera
         ref={r => (this.theMapCamera = r)}
         defaultSettings={{
-          zoomLevel: 20,
+          zoomLevel: ZOOM_LEVEL,
           centerCoordinate: (this.props.location && [
             parseFloat(this.props.location.coords.longitude),
             parseFloat(this.props.location.coords.latitude),
           ]),
           pitch: MAP_PITCH,
         }}
-        animationDuration={300}
+          animationDuration={CAMERA_ANIMATION_DURATION}
         centerCoordinate={this.props.showStops ? undefined
           : this.props.warp ? (this.props.location && [
               parseFloat(this.props.location.coords.longitude),
@@ -401,9 +412,13 @@ export class SiftrMap extends React.Component {
         }
         followUserLocation={!(this.props.showStops || this.props.warp)}
         followUserMode={this.props.trackDirection ? 'compass' : 'normal'}
+          onUserTrackingModeChange={() => {
+
+          }}
         pitch={this.props.showStops ? 0 : MAP_PITCH}
-        followPitch={MAP_PITCH}
-        followZoomLevel={20}
+          zoomLevel={ZOOM_LEVEL}
+        // followPitch={MAP_PITCH}
+        // followZoomLevel={ZOOM_LEVEL}
       />
       <MapboxGL.Style
         json={TestStyle}
@@ -450,10 +465,9 @@ export class SiftrMap extends React.Component {
           );
         })
       }
-      <MapboxGL.UserLocation
-        // visible={!this.props.showStops}
-        visible={false}
-      />
+
+        {/* <MapboxGL.UserLocation visible={!this.props.showStops} /> */}
+
     </MapboxGL.MapView>
     {
       !this.props.showStops && (
@@ -481,9 +495,9 @@ export class SiftrMap extends React.Component {
                 autoPlay={true}
                 camera={{
                   position: {
-                    x: Math.sin(headingRadians) * -2,
+                    x: this.props.trackDirection ? 0 : Math.sin(headingRadians) * -2,
                     y: 0.9,
-                    z: Math.cos(headingRadians) * 2,
+                    z: this.props.trackDirection ? -2 : Math.cos(headingRadians) * 2,
                   },
                   lookAt: {
                     x: 0, y: 0.8, z: 0,

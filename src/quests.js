@@ -44,7 +44,7 @@ export const getQuestProgress = (details) => {
       progress.push(dotRow);
     }
 
-    // go to tour stops
+    // go to tour stops  
     const tourStopAtoms = and.atoms.filter(atom => atom.atom.requirement === 'PLAYER_VIEWED_PLAQUE');
     if (tourStopAtoms.length > 0) {
       let dotRow = {
@@ -90,7 +90,7 @@ export const QuestDotDetails = function(props) {
   return (
     <View style={{
       flex: 1,
-      backgroundColor: 'rgb(67,139,176)',
+      backgroundColor: '#ffffff00',
       flexDirection: 'column',
       paddingLeft: 10,
       paddingRight: 10,
@@ -190,7 +190,7 @@ export const QuestDotDetails = function(props) {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={{
+      {/* <View style={{
         position: 'absolute',
         top: 10,
         left: 0,
@@ -201,7 +201,7 @@ export const QuestDotDetails = function(props) {
           style={{width: 120 * 0.5, height: 172 * 0.5}}
           source={require('../web/assets/img/stemports-puffin-color.png')}
         />
-      </View>
+      </View> */}
     </View>
   );
 }

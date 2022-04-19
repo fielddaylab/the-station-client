@@ -26,8 +26,8 @@ export const globalstyles = StyleSheet.create({
     height: 150 * 0.45,
     shadowColor: '#5D0D0D',
     shadowOpacity: 0.3,
-    shadowRadius: 6,
-    shadowOffset: {height: 2},
+    shadowRadius: .8,
+    shadowOffset: { height: -1 },
   },
 
   closeModifier: {

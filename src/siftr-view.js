@@ -34,7 +34,7 @@ import { NativeSettings } from "./native-settings";
 import { NativeCard } from "./native-browser";
 import {CacheMedia} from './media';
 import ProgressCircle from 'react-native-progress-circle';
-import {InventoryScreen, CacheContents, PuffinSnacksID, PhotoItemIDs} from './items';
+import { InventoryScreen, CacheContents, PuffinSnacksID } from './items';
 import {PlaqueScreen} from './plaques';
 import {QuestDetails, QuestDotDetails, GenericModal, TaskComplete, QuestComplete, getQuestProgress} from './quests';
 import {evalReqPackage} from './requirements';
@@ -61,12 +61,13 @@ import {
 import { timeToARIS } from "./time-slider";
 
 import { SearchNotes } from "./search-notes";
-import { SiftrMap, makeClusters, maxPickupDistance, meterDistance } from "./map";
+import { SiftrMap, makeClusters, meterDistance } from "./map";
 import { SiftrThumbnails } from "./thumbnails";
 import { SiftrNoteView } from "./note-view";
 import { CreatePhoto, CreateData, Blackout } from "./create-note-native";
 
 import { withSuccess } from "./utils";
+import { MAX_PICKUP_DISTANCE, WIGGLE_ROOM } from "./config";
 
 const AnimTouch = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -656,13 +657,13 @@ function shuffle(array) {
   }
   return array;
 }
-let shuffledSnackLines = [];
-function getSnackLine() {
-  if (shuffledSnackLines.length === 0) {
-    shuffledSnackLines = shuffle(SnackLines);
-  }
-  return shuffledSnackLines.pop();
-}
+// let shuffledSnackLines = [];
+// function getSnackLine() {
+//   if (shuffledSnackLines.length === 0) {
+//     shuffledSnackLines = shuffle(SnackLines);
+//   }
+//   return shuffledSnackLines.pop();
+// }
 
 export const SiftrView = createClass({
   displayName: "SiftrView",
@@ -779,6 +780,7 @@ export const SiftrView = createClass({
       warp: parseInt(this.props.game.game_id) === 100058,
       chipAnimation: new Animated.Value(0),
       trackDirection: true,
+      showHelpText: true
     };
   },
   getAllNotes: function(cb) {
@@ -1198,7 +1200,7 @@ export const SiftrView = createClass({
         this.props.plaques.forEach(plaque => {
           const inRange = this.getObjectInstances('PLAQUE', plaque.plaque_id).some(instance =>
             this.getTriggersForInstance(instance).some(trigger =>
-              meterDistance(trigger, playerLoc) < maxPickupDistance
+              meterDistance(trigger, playerLoc) < MAX_PICKUP_DISTANCE
             )
           )
           if (inRange) {
@@ -1332,8 +1334,8 @@ export const SiftrView = createClass({
     this.isMounted = false;
     clearInterval(this.nomenTimer);
     BackHandler.removeEventListener("hardwareBackPress", this.hardwareBack);
-    Keyboard.removeListener("keyboardWillShow", this.keyboardShow);
-    Keyboard.removeListener("keyboardWillHide", this.keyboardHide);
+    Keyboard.remove("keyboardWillShow", this.keyboardShow);
+    Keyboard.remove("keyboardWillHide", this.keyboardHide);
   },
   UNSAFE_componentWillReceiveProps: function (nextProps) {
     var newAuth, newGame, ref, ref1;
@@ -2169,11 +2171,10 @@ export const SiftrView = createClass({
           this.getLocationFromMap(location => {
             if (!location) return;
             const distance = Math.ceil(meterDistance(o.trigger, location));
-            const wiggleRoom = 4; // to make sure stuff on the edge is clickable
-            if (distance > maxPickupDistance + wiggleRoom && !this.state.warp) {
+            if (distance > MAX_PICKUP_DISTANCE + WIGGLE_ROOM && !this.state.warp) {
               Alert.alert(
                 'Too far',
-                `You are ${distance}m away. Walk ${distance - maxPickupDistance}m closer`,
+                `You are ${distance}m away. Walk ${distance - MAX_PICKUP_DISTANCE}m closer`,
                 [
                   {text: 'OK'},
                 ],
@@ -2856,56 +2857,56 @@ export const SiftrView = createClass({
   },
 
   // stuff for cache and tour stop
-  selectPhoto: function(){
-    const gavePhoto = `${RNFS.DocumentDirectoryPath}/siftrs/${this.props.game.game_id}/gave_photo_${this.props.currentQuest.quest_id}.txt`;
-    return RNFS.exists(gavePhoto).then((exists) => {
-      if (exists) {
-        return null;
-      } else {
-        return RNFS.writeFile(gavePhoto, 'true', 'utf8').then(() => {
-          return PhotoItemIDs.find(photo_id =>
-            this.props.inventory_zero.some(inst =>
-              inst.object_type === 'ITEM'
-                && parseInt(inst.object_id) === photo_id
-                && parseInt(inst.qty) === 0
-            )
-          );
-        });
-      }
-    });
-  },
-  selectSnack: function(){
-    const gaveSnacks = `${RNFS.DocumentDirectoryPath}/siftrs/${this.props.game.game_id}/gave_snacks_${this.props.currentQuest.quest_id}.txt`;
-    return RNFS.exists(gaveSnacks).then((exists) => {
-      if (exists) {
-        return false;
-      } else {
-        return RNFS.writeFile(gaveSnacks, 'true', 'utf8').then(() => {
-          return true;
-        });
-      }
-    });
-  },
-  givePhoto: function(photo_id){
-    const new_inventory_zero = this.props.inventory_zero.map(inst => {
-      if (inst.object_type === 'ITEM' && parseInt(inst.object_id) === photo_id) {
-        return update(inst, {qty: {$set: 1}});
-      } else {
-        return inst;
-      }
-    });
-    this.props.saveInventoryZero(new_inventory_zero);
-  },
-  giveSnack: function(){
-    const new_inventory_zero = this.props.inventory_zero.map(inst => {
-      if (inst.object_type === 'ITEM' && parseInt(inst.object_id) === PuffinSnacksID) {
-        return update(inst, {qty: (n) => parseInt(n) + 3});
-      } else {
-        return inst;
-      }
-    });
-    this.props.saveInventoryZero(new_inventory_zero);
-  },
+  // selectPhoto: function(){
+  //   const gavePhoto = `${RNFS.DocumentDirectoryPath}/siftrs/${this.props.game.game_id}/gave_photo_${this.props.currentQuest.quest_id}.txt`;
+  //   return RNFS.exists(gavePhoto).then((exists) => {
+  //     if (exists) {
+  //       return null;
+  //     } else {
+  //       return RNFS.writeFile(gavePhoto, 'true', 'utf8').then(() => {
+  //         return PhotoItemIDs.find(photo_id =>
+  //           this.props.inventory_zero.some(inst =>
+  //             inst.object_type === 'ITEM'
+  //               && parseInt(inst.object_id) === photo_id
+  //               && parseInt(inst.qty) === 0
+  //           )
+  //         );
+  //       });
+  //     }
+  //   });
+  // },
+  // selectSnack: function(){
+  //   const gaveSnacks = `${RNFS.DocumentDirectoryPath}/siftrs/${this.props.game.game_id}/gave_snacks_${this.props.currentQuest.quest_id}.txt`;
+  //   return RNFS.exists(gaveSnacks).then((exists) => {
+  //     if (exists) {
+  //       return false;
+  //     } else {
+  //       return RNFS.writeFile(gaveSnacks, 'true', 'utf8').then(() => {
+  //         return true;
+  //       });
+  //     }
+  //   });
+  // },
+  // givePhoto: function(photo_id){
+  //   const new_inventory_zero = this.props.inventory_zero.map(inst => {
+  //     if (inst.object_type === 'ITEM' && parseInt(inst.object_id) === photo_id) {
+  //       return update(inst, {qty: {$set: 1}});
+  //     } else {
+  //       return inst;
+  //     }
+  //   });
+  //   this.props.saveInventoryZero(new_inventory_zero);
+  // },
+  // giveSnack: function(){
+  //   const new_inventory_zero = this.props.inventory_zero.map(inst => {
+  //     if (inst.object_type === 'ITEM' && parseInt(inst.object_id) === PuffinSnacksID) {
+  //       return update(inst, {qty: (n) => parseInt(n) + 3});
+  //     } else {
+  //       return inst;
+  //     }
+  //   });
+  //   this.props.saveInventoryZero(new_inventory_zero);
+  // },
 
   render: function() {
     var hasOptions, ref2, ref3, ref4;
@@ -3152,7 +3153,7 @@ export const SiftrView = createClass({
                   }} source={require('../web/assets/img/horizon-fade.png')} />
                 )
               }
-
+              {this.state.showHelpText &&
               <GuideLine
                 style={{
                   flexDirection: 'column',
@@ -3164,6 +3165,7 @@ export const SiftrView = createClass({
                 }}
                 ref={gl => (this.puffinGuideLine = gl)}
                 onPress={() => this.pushModal({type: 'quests'})}
+                onClose={() => { this.setState({ showHelpText: false }); }}
                 text={(() => {
                   if (this.state.tempGuideLine) {
                     return this.state.tempGuideLine;
@@ -3183,7 +3185,7 @@ export const SiftrView = createClass({
                   }
                 })()}
                 auth={this.props.auth}
-              />
+                />}
 
               {/* right side panel */}
               <View style={{
@@ -3198,7 +3200,7 @@ export const SiftrView = createClass({
                 borderBottomLeftRadius: 12,
                 padding: 5,
               }}>
-                <View style={{
+                {/* <View style={{
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}>
@@ -3217,8 +3219,8 @@ export const SiftrView = createClass({
                   }}>
                     {snacksCount}
                   </Text>
-                </View>
-                { // puffin snack related
+                </View> */}
+                {/* { // puffin snack related
                   snacksCount === 0 ? (
                     <View style={{
                       backgroundColor: 'white',
@@ -3267,20 +3269,42 @@ export const SiftrView = createClass({
                       </Text>
                     </TouchableOpacity>
                   )
-                }
+                } */}
 
                 {/* spacer  */}
-                <View style={{
+                {/* <View style={{
                   backgroundColor: 'white',
                   width: 75,
                   height: 2,
-                }} />
+                }} /> */}
+
+                {/* help btn */}
+                <TouchableOpacity
+                  onPress={() => {
+                    // this.setState({showStops: !this.state.showStops});
+
+                    // loads help 
+                    this.pushModal({ type: 'quests' })
+                  }}
+                  style={{
+                  }}>
+                  <Image source={require('../web/assets/img/stemports-help.png')
+                  } style={{
+                    width: 90,
+                    height: 90,
+                    margin: -10,
+                    marginTop: 0,
+                    // marginBottom: -25,
+                    }} />
+                </TouchableOpacity>
 
                 {/* map options  */}
                 {/* toggle show stops  */}
                 <TouchableOpacity onPress={() => {
                   this.setState({showStops: !this.state.showStops});
                 }} style={{
+                  borderTopWidth: 2,
+                  borderTopColor: 'white'
                 }}>
                   <Image source={this.state.showStops
                     ? require('../web/assets/img/icon-returntoground.png')
@@ -3290,21 +3314,26 @@ export const SiftrView = createClass({
                     height: 90,
                     margin: -10,
                     marginTop: 0,
-                    marginBottom: -25,
+                    // marginBottom: -25,
                   }} />
                 </TouchableOpacity>
 
                 {/* toggle map pitch */}
+                {!this.state.showStops &&
                 <TouchableOpacity onPress={() => {
                   this.setState({trackDirection: !this.state.trackDirection});
                 }} style={{
                 }}>
-                  <Image source={require('../web/assets/img/stemports-compass.png')} style={{
+                    <Image source={this.state.trackDirection ?
+                      require('../web/assets/img/stemports-compass-tilted.png')
+                      :
+                      require('../web/assets/img/stemports-compass.png')
+                    } style={{
                     width: 90,
                     height: 90,
                     margin: -10,
                   }} />
-                </TouchableOpacity>
+                  </TouchableOpacity>}
               </View>
 
 
@@ -3323,7 +3352,7 @@ export const SiftrView = createClass({
               }
 
               {
-                !(this.state.showStops) && (
+
                   <View pointerEvents="box-none" style={{
                     position: 'absolute',
                     bottom: 10,
@@ -3393,8 +3422,7 @@ export const SiftrView = createClass({
                         }}
                       />
                     </TouchableOpacity>
-                  </View>
-                )
+                </View>
               }
 
               {this.renderNoteView()}
@@ -3661,10 +3689,10 @@ export const SiftrView = createClass({
                             });
                           }}
                           addChip={this.addChip/*.bind(this)*/}
-                          selectPhoto={this.selectPhoto/*.bind(this)*/}
-                          selectSnack={this.selectSnack/*.bind(this)*/}
-                          givePhoto={this.givePhoto/*.bind(this)*/}
-                          giveSnack={this.giveSnack/*.bind(this)*/}
+                          // selectPhoto={this.selectPhoto/*.bind(this)*/}
+                          // selectSnack={this.selectSnack/*.bind(this)*/}
+                          // givePhoto={this.givePhoto/*.bind(this)*/}
+                          // giveSnack={this.giveSnack/*.bind(this)*/}
                         />
                       );
                     } else if (modal.instance.object_type === 'ITEM') {
@@ -3684,10 +3712,10 @@ export const SiftrView = createClass({
                               auth={this.props.auth}
                               onClose={this.popModal/*.bind(this)*/}
                               addChip={this.addChip/*.bind(this)*/}
-                              selectPhoto={this.selectPhoto/*.bind(this)*/}
-                              selectSnack={this.selectSnack/*.bind(this)*/}
-                              givePhoto={this.givePhoto/*.bind(this)*/}
-                              giveSnack={this.giveSnack/*.bind(this)*/}
+                              // selectPhoto={this.selectPhoto/*.bind(this)*/}
+                              // selectSnack={this.selectSnack/*.bind(this)*/}
+                              // givePhoto={this.givePhoto/*.bind(this)*/}
+                              // giveSnack={this.giveSnack/*.bind(this)*/}
                               onPickUp={(trigger) => {
                                 this.setState(state => {
                                   if (!state.guideMentionedRemnant && parseInt(this.props.game.game_id) === 100058) {

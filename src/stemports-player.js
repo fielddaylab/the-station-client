@@ -15,7 +15,7 @@ import { globalstyles } from "./global-styles";
 import { StemportsPicker } from "./stemports-picker";
 import { NativeSettings } from "./native-settings";
 import { deserializeGame } from "./aris";
-import { PhotoImages, PhotoItemIDs } from "./items";
+// import { PhotoImages, PhotoItemIDs } from "./items";
 import SideMenu from 'react-native-side-menu-updated';
 import analytics from '@react-native-firebase/analytics';
 
@@ -422,7 +422,7 @@ export class StemportsPlayer extends React.Component {
                 )
               }
             </View>
-            <ImageBackground
+            {/* <ImageBackground
               source={require('../web/assets/img/home-comic-bg.jpg')}
               style={{
                 padding: 35,
@@ -454,8 +454,8 @@ export class StemportsPlayer extends React.Component {
                 </Text>
               </TouchableOpacity>
             </View>
-            </ImageBackground>
-            <Text style={{
+            </ImageBackground> */}
+            {/*<Text style={{
               padding: 30,
               fontSize: 22,
               fontFamily: 'LeagueSpartan-Bold',
@@ -467,7 +467,7 @@ export class StemportsPlayer extends React.Component {
               flexWrap: 'wrap',
               flexDirection: 'row',
             }}>
-              {
+               {
                 PhotoItemIDs.map((item_id, photoIndex) => {
                   if (parseInt(globalItems[item_id]) > 0) {
                     return (
@@ -501,7 +501,7 @@ export class StemportsPlayer extends React.Component {
                   }
                 })
               }
-            </View>
+            </View> */}
           </ScrollView>
           <View style={globalstyles.closeContainer} pointerEvents="box-none">
             <TouchableOpacity onPress={this.props.onClose}>
@@ -576,7 +576,7 @@ export class PhotoView extends React.Component {
   render() {
     return (
       <View style={{flex: 1, backgroundColor: 'white'}}>
-        <View style={{
+        {/* <View style={{
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
@@ -585,7 +585,7 @@ export class PhotoView extends React.Component {
             style={{flex: 1, resizeMode: 'contain'}}
             source={PhotoImages[PhotoItemIDs.indexOf(this.props.photoID)]}
           />
-        </View>
+        </View> */}
         <View style={globalstyles.closeContainer} pointerEvents="box-none">
           <TouchableOpacity onPress={this.props.onClose}>
             <Image

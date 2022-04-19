@@ -160,15 +160,17 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
           // do nothing; we need to pass this to avoid
           // https://github.com/facebook/react-native/issues/9490#issuecomment-271974881
         }, {
-          timeout: 1000,
+          timeout: 10,
           enableHighAccuracy: true,
-          maximumAge: 1000,
+          maximumAge: 0,
           distanceFilter: 10,
           useSignificantChanges: false,
         });
       }
     });
     Orientation.lockToPortrait();
+
+
   },
   componentWillUnmount: function() {
     this.removeNetInfo && this.removeNetInfo();

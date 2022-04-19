@@ -22,20 +22,20 @@ import {Text, FixedMarkdown, hypher} from './styles';
 import { globalstyles } from "./global-styles";
 import {GuideLine} from './stemports-picker';
 
-export const PuffinSnacksID = 141587;
-export const PhotoItemIDs = [214742, 214743, 214744, 214745, 214746, 214747, 214748, 214749, 214750, 214751];
-export const PhotoImages = [
-  require('../web/assets/img/cache-photo-00.jpg'),
-  require('../web/assets/img/cache-photo-01.jpg'),
-  require('../web/assets/img/cache-photo-02.jpg'),
-  require('../web/assets/img/cache-photo-03.jpg'),
-  require('../web/assets/img/cache-photo-04.jpg'),
-  require('../web/assets/img/cache-photo-05.jpg'),
-  require('../web/assets/img/cache-photo-06.jpg'),
-  require('../web/assets/img/cache-photo-07.jpg'),
-  require('../web/assets/img/cache-photo-08.jpg'),
-  require('../web/assets/img/cache-photo-09.jpg'),
-];
+// export const PuffinSnacksID = 141587;
+// export const PhotoItemIDs = [214742, 214743, 214744, 214745, 214746, 214747, 214748, 214749, 214750, 214751];
+// export const PhotoImages = [
+//   require('../web/assets/img/cache-photo-00.jpg'),
+//   require('../web/assets/img/cache-photo-01.jpg'),
+//   require('../web/assets/img/cache-photo-02.jpg'),
+//   require('../web/assets/img/cache-photo-03.jpg'),
+//   require('../web/assets/img/cache-photo-04.jpg'),
+//   require('../web/assets/img/cache-photo-05.jpg'),
+//   require('../web/assets/img/cache-photo-06.jpg'),
+//   require('../web/assets/img/cache-photo-07.jpg'),
+//   require('../web/assets/img/cache-photo-08.jpg'),
+//   require('../web/assets/img/cache-photo-09.jpg'),
+// ];
 import analytics from '@react-native-firebase/analytics';
 
 export class FullWidthWebView extends React.Component {
@@ -111,20 +111,24 @@ export class CacheContents extends React.Component {
       this.setState({screen: 'open', eventIndex: this.state.eventIndex + 1});
       return;
     }
+    else {
+      this.setState({ screen: 'closing' });
+    }
+    // this.props.selectPhoto().then((photo_id) => {
 
-    this.props.selectPhoto().then((photo_id) => {
-      if (photo_id) {
-        this.setState({screen: 'photo', photo_id: photo_id});
-      } else {
-        this.props.selectSnack().then((shouldGiveSnacks) => {
-          if (shouldGiveSnacks) {
-            this.setState({screen: 'snacks'});
-          } else {
-            this.setState({screen: 'closing'});
-          }
-        });
-      }
-    });
+      // if (photo_id) {
+      //   this.setState({ screen: 'photo', photo_id: photo_id });
+      // }
+      // else {
+        // this.props.selectSnack().then((shouldGiveSnacks) => {
+        //   if (shouldGiveSnacks) {
+        //     this.setState({screen: 'snacks'});
+        //   } else {
+        //     this.setState({screen: 'closing'});
+        //   }
+        // });
+      // }
+    // });
   }
 
   render() {
@@ -266,96 +270,98 @@ export class CacheContents extends React.Component {
             </View>
           </ImageBackground>
         );
-      case 'photo':
-        return (
-          <ImageBackground source={require('../web/assets/img/cache-open-bg.jpg')} style={globalstyles.backgroundImage}>
-            <View style={{
-              flex: 1,
-              flexDirection: 'column',
-              backgroundColor: 'rgba(0,0,0,0.1)',
-              alignItems: 'center',
-              justifyContent: 'space-around',
-            }}>
-              <TouchableOpacity onPress={() => {
-                this.props.givePhoto(this.state.photo_id);
-                this.props.addChip('Added to photo album!', 'rgb(110,186,180)', 'photos');
-                this.props.selectSnack().then((shouldGiveSnacks) => {
-                  if (shouldGiveSnacks) {
-                    this.setState({screen: 'snacks'});
-                  } else {
-                    this.props.onClose();
-                  }
-                });
-              }} style={{
-                backgroundColor: 'white',
-                padding: 8,
-                borderRadius: 5,
-              }}>
-                <Image
-                  source={PhotoImages[PhotoItemIDs.indexOf(this.state.photo_id)]}
-                  style={{
-                    margin: 20,
-                    resizeMode: 'contain',
-                    width: 250,
-                    height: 450,
-                  }}
-                />
-              </TouchableOpacity>
-            </View>
-          </ImageBackground>
-        );
-      case 'snacks':
-        return (
-          <ImageBackground source={require('../web/assets/img/cache-open-bg.jpg')} style={globalstyles.backgroundImage}>
-            <View style={{
-              flex: 1,
-              flexDirection: 'column',
-              backgroundColor: 'rgba(0,0,0,0.1)',
-              alignItems: 'center',
-              justifyContent: 'space-evenly',
-            }}>
-              <Text style={{
-                color: 'white',
-                fontSize: 25,
-                fontWeight: 'bold',
-                textTransform: 'uppercase',
-              }}>
-                Puffin snacks!
-              </Text>
-              <Image
-                source={require('../web/assets/img/puffin-snacks.png')}
-                style={{
-                  width: 220,
-                  height: 220,
-                  resizeMode: 'contain',
-                }}
-              />
-              <TouchableOpacity onPress={() => {
-                this.props.giveSnack();
-                this.props.addChip('Collected puffin snacks!', 'rgb(238,107,100)', 'snacks');
-                this.props.onClose();
-              }} style={{
-                backgroundColor: 'white',
-                padding: 8,
-                borderRadius: 5,
-                shadowColor: '#5D0D0D',
-                shadowOpacity: 0.3,
-                shadowRadius: 6,
-                shadowOffset: {height: 2},
-                marginBottom: 40,
-              }}>
-                <Text style={{
-                  color: '#647033',
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                  textTransform: 'uppercase',
-                }}>
-                  Collect
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </ImageBackground>
-        );
+      // case 'photo':
+      //   return (
+      //     <ImageBackground source={require('../web/assets/img/cache-open-bg.jpg')} style={globalstyles.backgroundImage}>
+      //       <View style={{
+      //         flex: 1,
+      //         flexDirection: 'column',
+      //         backgroundColor: 'rgba(0,0,0,0.1)',
+      //         alignItems: 'center',
+      //         justifyContent: 'space-around',
+      //       }}>
+      //         <TouchableOpacity onPress={() => {
+      //           this.props.givePhoto(this.state.photo_id);
+      //           this.props.addChip('Added to photo album!', 'rgb(110,186,180)', 'photos');
+      //           this.props.selectSnack().then((shouldGiveSnacks) => {
+      //             if (shouldGiveSnacks) {
+      //               this.setState({screen: 'snacks'});
+      //             } else {
+      //               this.props.onClose();
+      //             }
+      //           });
+      //         }} style={{
+      //           backgroundColor: 'white',
+      //           padding: 8,
+      //           borderRadius: 5,
+      //         }}>
+      //           <Image
+      //             source={PhotoImages[PhotoItemIDs.indexOf(this.state.photo_id)]}
+      //             style={{
+      //               margin: 20,
+      //               resizeMode: 'contain',
+      //               width: 250,
+      //               height: 450,
+      //             }}
+      //           />
+      //         </TouchableOpacity>
+      //       </View>
+      //     </ImageBackground>
+      //   );
+      // case 'snacks':
+        // return (
+        //   <ImageBackground source={require('../web/assets/img/cache-open-bg.jpg')} style={globalstyles.backgroundImage}>
+        //     <View style={{
+        //       flex: 1,
+        //       flexDirection: 'column',
+        //       backgroundColor: 'rgba(0,0,0,0.1)',
+        //       alignItems: 'center',
+        //       justifyContent: 'space-evenly',
+        //     }}>
+        //       {/* <Text style={{
+        //         color: 'white',
+        //         fontSize: 25,
+        //         fontWeight: 'bold',
+        //         textTransform: 'uppercase',
+        //       }}>
+        //         Puffin snacks!
+        //       </Text> */}
+        //       {/* <Image
+        //         source={require('../web/assets/img/puffin-snacks.png')}
+        //         style={{
+        //           width: 220,
+        //           height: 220,
+        //           resizeMode: 'contain',
+        //         }}
+        //       /> */}
+        //       <TouchableOpacity
+        //         onPress={() => {
+        //         // this.props.giveSnack();
+        //         // this.props.addChip('Collected puffin snacks!', 'rgb(238,107,100)', 'snacks');
+        //         this.props.onClose();
+        //         }}
+        //         style={{
+        //         backgroundColor: 'white',
+        //         padding: 8,
+        //         borderRadius: 5,
+        //         shadowColor: '#5D0D0D',
+        //         shadowOpacity: 0.3,
+        //         shadowRadius: 6,
+        //         shadowOffset: {height: 2},
+        //         marginBottom: 40,
+        //       }}>
+        //         <Text style={{
+        //           color: '#647033',
+        //           fontSize: 20,
+        //           fontWeight: 'bold',
+        //           textTransform: 'uppercase',
+        //         }}>
+        //           Collect
+        //         </Text>
+        //       </TouchableOpacity>
+        //     </View>
+        //   </ImageBackground>
+        // );
       case 'closing':
         // this is ugly, it's because if you unmount a modal inside another modal, the whole app softlocks!
         // this would otherwise happen when we don't have photo or snacks to give

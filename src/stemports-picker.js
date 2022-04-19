@@ -12,7 +12,8 @@ import {
   ActivityIndicator,
   Dimensions,
   Linking,
-  ImageBackground
+  ImageBackground,
+  Alert
 } from "react-native";
 import { Text, FixedMarkdown } from "./styles";
 import {deserializeGame} from "./aris";
@@ -28,8 +29,7 @@ import MapboxGL from "@react-native-mapbox-gl/maps";
 import ModelView from '../react-native-3d-model-view/lib/ModelView';
 import TestStyle from './mapbox-style.json';
 import analytics from '@react-native-firebase/analytics';
-import { MAP_PITCH } from "./constants";
-
+import { CAMERA_ANIMATION_DURATION, MAP_PITCH, ZOOM_LEVEL } from "./config";
 MapboxGL.setAccessToken("pk.eyJ1IjoiZmllbGRkYXlsYWIiLCJhIjoiY2s3ejh3cHNrMDNtMTNlcnk2dmxnZzhidyJ9.-Kt-a2vKYZ49CjY_no1P9A");
 
 const RNFS = require("react-native-fs");
@@ -493,7 +493,7 @@ export class StemportsPicker extends React.Component {
         const updatedTriggers = allData.triggers.map(trigger => {
           if (instanceLookup[trigger.instance_id].object_type === 'ITEM') {
             let closestPlaque = null;
-            let closestDistance = maxPickupDistance;
+            let closestDistance = MAX_PICKUP_DISTANCE;
             plaqueTriggers.forEach(otherTrigger => {
               const distance = meterDistance(trigger, otherTrigger);
               if (distance < closestDistance) {
@@ -1122,7 +1122,7 @@ export class StemportsPicker extends React.Component {
             >
               <MapboxGL.Camera
                 defaultSettings={{
-                  zoomLevel: 20,
+                  zoomLevel: ZOOM_LEVEL,
                   centerCoordinate: (this.props.location && [
                     parseFloat(this.props.location.coords.longitude),
                     parseFloat(this.props.location.coords.latitude),
@@ -1130,11 +1130,11 @@ export class StemportsPicker extends React.Component {
                   pitch: MAP_PITCH,
                 }}
                 pitch={MAP_PITCH}
-                animationDuration={300}
+                animationDuration={CAMERA_ANIMATION_DURATION}
                 followUserLocation={true}
                 followUserMode="normal"
                 followPitch={MAP_PITCH}
-                followZoomLevel={20}
+                followZoomLevel={ZOOM_LEVEL}
               />
               {
                 !this.props.viewComic && gameList.map(o =>
@@ -1465,16 +1465,16 @@ export class GuideLine extends React.Component {
     });
   }
 
-  eatSnack() {
-    if (this.state.eating) return;
-    this.setState({
-      eating: true,
-    }, () => {
-      setTimeout((() => {
-        this.setState({eating: false});
-      }), 1500)
-    })
-  }
+  // eatSnack() {
+  //   if (this.state.eating) return;
+  //   this.setState({
+  //     eating: true,
+  //   }, () => {
+  //     setTimeout((() => {
+  //       this.setState({eating: false});
+  //     }), 1500)
+  //   })
+  // }
 
   render() {
     const puffinModel = (
@@ -1521,18 +1521,28 @@ export class GuideLine extends React.Component {
             width: 120 * 0.5,
             height: 'auto',
             marginTop: 15,
+            marginRight: 60
           }}>
-          <Image
-            source={require('../web/assets/img/text-triangle.png')}
-            style={{
-              position: 'absolute',
-              width: 28,
-              height: 28,
-              top: '50%',
-              right: -10,
-              marginBottom: -14,
-            }}
-          />
+            {this.props.onClose &&
+              <TouchableOpacity
+                onPress={() => {
+                  // Alert.alert('close')
+                  this.props.onClose()
+                }}
+                style={{
+                  position: 'absolute',
+                  top: -10,
+                  right: -10,
+                }}
+              >
+                <Image
+                  source={require('../web/assets/img/checkmark.png')}
+                  style={{
+                    width: 30,
+                    height: 30,
+                  }}
+                />
+              </TouchableOpacity>}
             <Text style={{
               fontFamily: 'OpenSans-SemiBold',
             }}>
@@ -1552,7 +1562,7 @@ export class GuideLine extends React.Component {
               ) : null
             }
           </View>
-          {
+          {/* {
             this.props.onPress ? (
               <TouchableOpacity style={{margin: 10}} onPress={this.props.onPress}>
                 {puffinModel}
@@ -1560,7 +1570,7 @@ export class GuideLine extends React.Component {
             ) : (
               puffinModel
             )
-          }
+          } */}
         </View>
       </View>
     );
