@@ -360,8 +360,8 @@ export class SiftrMap extends React.Component {
           right: 10,
           zIndex: 10,
         }}>
-        <Text>{this.state.heading.toFixed(2)}</Text>
-        <Text>Debug</Text>
+        {/* <Text>{this.state.heading.toFixed(2)}</Text>
+        <Text>Debug</Text> */}
       </View>
 
 

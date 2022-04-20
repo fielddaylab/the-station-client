@@ -1241,7 +1241,7 @@ export class StemportsPicker extends React.Component {
                 />
               )
             }
-            {
+            { 
               !this.props.viewComic && (
                 <View pointerEvents="box-none" style={{
                   flexDirection: 'row',
@@ -1520,8 +1520,8 @@ export class GuideLine extends React.Component {
             alignItems: 'flex-start',
             width: 120 * 0.5,
             height: 'auto',
-            marginTop: 15,
-            marginRight: 60
+            marginTop: 0,
+            marginRight: 0
           }}>
             {this.props.onClose &&
               <TouchableOpacity
@@ -1531,8 +1531,8 @@ export class GuideLine extends React.Component {
                 }}
                 style={{
                   position: 'absolute',
-                  top: -10,
-                  right: -10,
+                  top: 10,
+                  right: 10,
                 }}
               >
                 <Image
@@ -1545,6 +1545,7 @@ export class GuideLine extends React.Component {
               </TouchableOpacity>}
             <Text style={{
               fontFamily: 'OpenSans-SemiBold',
+              marginRight: 20
             }}>
               {this.state.text.slice(0, this.state.chars)}
             </Text>

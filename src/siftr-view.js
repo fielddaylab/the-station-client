@@ -3300,7 +3300,8 @@ export const SiftrView = createClass({
 
                 {/* map options  */}
                 {/* toggle show stops  */}
-                <TouchableOpacity onPress={() => {
+                {!this.state.warp &&
+                  < TouchableOpacity onPress={() => {
                   this.setState({showStops: !this.state.showStops});
                 }} style={{
                   borderTopWidth: 2,
@@ -3316,7 +3317,7 @@ export const SiftrView = createClass({
                     marginTop: 0,
                     // marginBottom: -25,
                   }} />
-                </TouchableOpacity>
+                  </TouchableOpacity>}
 
                 {/* toggle map pitch */}
                 {!this.state.showStops &&
@@ -3574,7 +3575,14 @@ export const SiftrView = createClass({
                             onClose={() => this.popModal()}
                             inQuest={true}
                             onToggleWarp={() => {
-                              this.setState({warp: !this.state.warp, warpCoords: null, factoryObjects: [], factoryProductionTimestamps: {}});
+                              this.setState({
+                                warp: !this.state.warp,
+                                warpCoords: null,
+                                factoryObjects: [],
+                                factoryProductionTimestamps: {},
+                                showStops: !this.state.warp
+                              });
+
                               if (!this.state.warp) {
                                 analytics().logEvent('StartWarpMode',{
                                   station_name: this.props.game.name,
