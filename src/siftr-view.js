@@ -777,7 +777,8 @@ export const SiftrView = createClass({
       guideLine: null,
       guideMentionedRemnant: false,
       guideMentionedXP: false,
-      warp: parseInt(this.props.game.game_id) === 100058,
+      // warp: parseInt(this.props.game.game_id) === 100058,
+      warp: false,
       chipAnimation: new Animated.Value(0),
       trackDirection: true,
       showHelpText: true
@@ -808,7 +809,9 @@ export const SiftrView = createClass({
   },
   setGuideLine: function(line) {
     this.setState(prevState => {
-      return update(prevState, {guideLine: {$set: line}});
+      return update(prevState, {
+        guideLine: { $set: line }
+      });
     });
   },
   setTempGuideLine: function(line) {
@@ -816,11 +819,13 @@ export const SiftrView = createClass({
     this.lastTempLineTime = thisTime;
     this.setState({
       tempGuideLine: line,
+      showHelpText: true
     }, () => {
       setTimeout(() => {
         if (this.lastTempLineTime === thisTime) {
           this.setState({
             tempGuideLine: null,
+            showHelpText: false
           });
         }
       }, 4000);
@@ -901,9 +906,7 @@ export const SiftrView = createClass({
     return update(root, {ands: {$set: ands}});
   },
   checkQuestsOffline: function(loop = true) {
-    if (!this.isMounted) {
-      // do nothing
-    } else {
+    if (this.isMounted) {
       let activeAll = [];
       let completeAll = [];
       let displayInfoAll = [];
@@ -1334,8 +1337,17 @@ export const SiftrView = createClass({
     this.isMounted = false;
     clearInterval(this.nomenTimer);
     BackHandler.removeEventListener("hardwareBackPress", this.hardwareBack);
-    Keyboard.remove("keyboardWillShow", this.keyboardShow);
-    Keyboard.remove("keyboardWillHide", this.keyboardHide);
+    Keyboard.removeListener("keyboardWillShow", this.keyboardShow);
+    Keyboard.removeListener("keyboardWillHide", this.keyboardHide);
+  },
+  componentDidUpdate: function (prevProps, prevState) {
+    if (!this.state.showHelpText) {
+      if (prevState.guideLine !== this.state.guideLine)
+        this.setState({ showHelpText: true })
+      if (!prevState.showStops && this.state.showStops)
+        this.setState({ showHelpText: true })
+    }
+
   },
   UNSAFE_componentWillReceiveProps: function (nextProps) {
     var newAuth, newGame, ref, ref1;
@@ -3172,11 +3184,11 @@ export const SiftrView = createClass({
                   } else if (this.state.showStops) {
                     const stopCount = this.getPlaques().length;
                     if (stopCount === 1) {
-                      return "I can see the whole area from up here. There's only one tour stop in this quest!";
+                      return "Looking at the whole area, there's only one tour stop in this quest!";
                     } else if (stopCount === 0) {
-                      return "I can see the whole area from up here. No tour stops in this quest!";
+                      return "Looking at the whole area, no tour stops in this quest!";
                     } else {
-                      return `I can see the whole area from up here. It looks like there are ${stopCount} stops total.`
+                      return `Looking at the whole area, it looks like there are ${stopCount} stops total.`
                     }
                   } else if (this.state.guideLine) {
                     return this.state.guideLine;

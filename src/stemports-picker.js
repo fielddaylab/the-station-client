@@ -29,8 +29,8 @@ import MapboxGL from "@react-native-mapbox-gl/maps";
 import ModelView from '../react-native-3d-model-view/lib/ModelView';
 import TestStyle from './mapbox-style.json';
 import analytics from '@react-native-firebase/analytics';
-import { CAMERA_ANIMATION_DURATION, MAP_PITCH, ZOOM_LEVEL } from "./config";
-MapboxGL.setAccessToken("pk.eyJ1IjoiZmllbGRkYXlsYWIiLCJhIjoiY2s3ejh3cHNrMDNtMTNlcnk2dmxnZzhidyJ9.-Kt-a2vKYZ49CjY_no1P9A");
+import { ACCESS_TOKEN, CAMERA_ANIMATION_DURATION, MAP_PITCH, ZOOM_LEVEL } from "./config";
+MapboxGL.setAccessToken(ACCESS_TOKEN);
 
 const RNFS = require("react-native-fs");
 
@@ -799,7 +799,11 @@ export class StemportsPicker extends React.Component {
             resizeMode: 'contain',
           }}
         >
-          <TouchableOpacity onPress={this.props.onCloseSplash} style={{
+          <TouchableOpacity onPress={
+            // this.props.onCloseSplash
+            this.props.onSkipTutorial
+          }
+            style={{
             backgroundColor: 'white',
             padding: 20,
             borderRadius: 5,
@@ -820,7 +824,7 @@ export class StemportsPicker extends React.Component {
               Begin
             </Text>
           </TouchableOpacity>
-          {
+          {/* {
             this.props.viewComic && (
               <TouchableOpacity onPress={this.props.onSkipTutorial} style={{
                 backgroundColor: 'white',
@@ -844,7 +848,7 @@ export class StemportsPicker extends React.Component {
                 </Text>
               </TouchableOpacity>
             )
-          }
+          } */}
         </ImageBackground>
       );
     }
@@ -1545,7 +1549,7 @@ export class GuideLine extends React.Component {
               </TouchableOpacity>}
             <Text style={{
               fontFamily: 'OpenSans-SemiBold',
-              marginRight: 20
+              marginRight: 30
             }}>
               {this.state.text.slice(0, this.state.chars)}
             </Text>

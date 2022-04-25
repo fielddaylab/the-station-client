@@ -14,6 +14,7 @@ import {FixedMarkdown, Text} from './styles';
 import {SquareImage, GalleryModal} from './note-view';
 import { globalstyles } from "./global-styles";
 import analytics from '@react-native-firebase/analytics';
+import ModelView from '../react-native-3d-model-view/lib/ModelView';
 
 export class PlaqueScreen extends React.Component {
   constructor(props) {

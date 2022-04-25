@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import {Platform} from 'react-native';
+import { Platform, Alert } from 'react-native';
 import RNFS from 'react-native-fs';
 import update from "immutability-helper";
 

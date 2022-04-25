@@ -204,6 +204,7 @@ export class SiftrMap extends React.Component {
       isMapReady: false,
       legendOpen: false,
       heading: 180, 
+      idle: true
     };
   }
 
@@ -389,6 +390,10 @@ export class SiftrMap extends React.Component {
       onRegionIsChanging={e => {
         // Alert.alert(e.properties)
         // this.setState({ heading: e.properties.heading });
+          this.setState({ idle: false })
+        }}
+        onRegionDidChange={e => {
+          this.setState({ idle: true })
       }}
       compassEnabled={false}
     >
@@ -472,7 +477,7 @@ export class SiftrMap extends React.Component {
     {
       !this.props.showStops && (
         <CacheMedia
-          media_id={920}
+            media_id={920}
           auth={this.props.auth}
           online={true}
           withURL={(url) =>
