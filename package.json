@@ -14,7 +14,7 @@
     "@react-native-community/netinfo": "^4.1.2",
     "@react-native-firebase/analytics": "^7.6.9",
     "@react-native-firebase/app": "^8.4.7",
-    "@react-native-mapbox-gl/maps": "8.1.0-rc.2",
+    "@rnmapbox/maps": "rnmapbox/maps#main",
     "create-react-class": "^15.6.3",
     "exif-js": "^2.3.0",
     "google-map-react": "^1.1.4",

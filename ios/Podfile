@@ -1,12 +1,20 @@
-platform :ios, '9.0'
+platform :ios, '11.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+
+$RNMapboxMapsImpl = 'mapbox'
+$RNMapboxMapsVersion = '~> 10.4.3'
+
+# use_frameworks!
+# use_modular_headers!
 
 target 'Station Maine' do
   # Pods for Station Maine
   pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app'
   pod 'Firebase/Analytics'
+  pod 'MapboxMaps', '10.4.3'
   pod 'React', :path => '../node_modules/react-native/'
-  pod 'React-Core', :path => '../node_modules/react-native/React'
+  pod 'React-Core', :path => '../node_modules/react-native/React', :modular_headers => true
   pod 'React-DevSupport', :path => '../node_modules/react-native/React'
   pod 'React-RCTActionSheet', :path => '../node_modules/react-native/Libraries/ActionSheetIOS'
   pod 'React-RCTAnimation', :path => '../node_modules/react-native/Libraries/NativeAnimation'
@@ -29,6 +37,10 @@ target 'Station Maine' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pre_install do |installer|
+    $RNMapboxMaps.pre_install(installer)
+  end
+  
   target 'Station MaineTests' do
     inherit! :search_paths
     # Pods for testing

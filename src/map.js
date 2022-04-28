@@ -5,7 +5,8 @@ import T from 'prop-types';
 
 import { View, Image, Dimensions, Alert, Text } from 'react-native';
 import {CacheMedia} from './media';
-import MapboxGL from "@react-native-mapbox-gl/maps";
+// import MapboxGL from "@react-native-mapbox-gl/maps";
+import MapboxGL from "@rnmapbox/maps";
 import ModelView from '../react-native-3d-model-view/lib/ModelView';
 
 import { Note } from './aris';
