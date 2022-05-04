@@ -28,7 +28,7 @@ import { globalstyles } from "./global-styles";
 // import MapboxGL from "@react-native-mapbox-gl/maps";
 import MapboxGL from "@rnmapbox/maps";
 import ModelView from '../react-native-3d-model-view/lib/ModelView';
-import TestStyle from './mapbox-style.json';
+// import TestStyle from './mapbox-style.json';
 import analytics from '@react-native-firebase/analytics';
 import { ACCESS_TOKEN, CAMERA_ANIMATION_DURATION, MAP_PITCH, ZOOM_LEVEL } from "./config";
 MapboxGL.setAccessToken(ACCESS_TOKEN);
@@ -1216,9 +1216,9 @@ export class StemportsPicker extends React.Component {
               <MapboxGL.UserLocation
                 visible={false}
               />
-              <MapboxGL.Style
+              {/* <MapboxGL.Style
                 json={TestStyle}
-              />
+              /> */}
             </MapboxGL.MapView>
 
             {

@@ -11,7 +11,7 @@ import ModelView from '../react-native-3d-model-view/lib/ModelView';
 
 import { Note } from './aris';
 
-import TestStyle from './mapbox-style.json';
+// import TestStyle from './mapbox-style.json';
 import { CAMERA_ANIMATION_DURATION, MAP_PITCH, ZOOM_LEVEL } from './config';
 
 const toWord8 = function(n) {
@@ -306,11 +306,12 @@ export class SiftrMap extends React.Component {
         animationDuration: CAMERA_ANIMATION_DURATION,
       });
     }
+    // if switched to perspective view (while compass on)
     else if (!this.props.showStops && prevProps.showStops && this.props.trackDirection) {
       this.theMapCamera.setCamera({
         pitch: MAP_PITCH,
         heading: 0,
-        minZoomLevel: 0,
+        minZoomLevel: ZOOM_LEVEL,
         animationDuration: CAMERA_ANIMATION_DURATION,
       });
     }
@@ -389,7 +390,7 @@ export class SiftrMap extends React.Component {
         this.props.onPress({latitude, longitude});
       }}
       onRegionIsChanging={e => {
-        // Alert.alert(e.properties)
+        Alert.alert(e.properties)
         // this.setState({ heading: e.properties.heading });
           this.setState({ idle: false })
         }}
@@ -426,9 +427,9 @@ export class SiftrMap extends React.Component {
         // followPitch={MAP_PITCH}
         // followZoomLevel={ZOOM_LEVEL}
       />
-      <MapboxGL.Style
+        {/* <MapboxGL.Style
         json={TestStyle}
-      />
+      /> */}
       {this.renderNotes()}
       {
         this.props.triggers && this.props.instances && this.props.triggers.map((trigger) => {

@@ -95,7 +95,7 @@ export var SiftrNative = createClass({
       this.urlHandler = ({ url }) => {
         this.parseURL(url);
       };
-      Linking.addEventListener("url", this.urlHandler);
+      this.linkingSubscription = Linking.addEventListener("url", this.urlHandler);
     });
     this.withInfo = connectionInfo => {
       var online, ref1;
@@ -174,8 +174,8 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
   },
   componentWillUnmount: function() {
     this.removeNetInfo && this.removeNetInfo();
-    Linking.remove("url", this.urlHandler);
-    AppState.remove("change", this.withAppState);
+    Linking.removeEventListener("url", this.urlHandler);
+    AppState.removeEventListener("change", this.withAppState);
     if (this.hardwareBack != null) {
       BackHandler.removeEventListener(
         "hardwareBackPress",
@@ -183,7 +183,7 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
       );
     }
     if (this.watchID) {
-      navigator.geolocation.clearWatch(this.watchID);
+      Geolocation.clearWatch(this.watchID);
     }
     Orientation.unlockAllOrientations();
   },
