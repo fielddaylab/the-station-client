@@ -183,7 +183,7 @@ export class StemportsPlayer extends React.Component {
           padding: 20,
         }}>
           <Text style={{fontSize: 17, color: 'white'}}>
-            {this.props.warpOn ? 'Stop Warping to Station' : 'Warp to Station'}
+            {this.props.warpOn ? 'Turn off Debug Mode' : 'Debug Mode'}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {

@@ -138,22 +138,12 @@ export var SiftrNative = createClass({
       if (response === 'authorized') {
         this.watchID = Geolocation.watchPosition((loc) => {
 
-
-          if (!true)
-          Alert.alert(
-            "DEBUG",
-            loc,
-            `Lat:${Number.parseFloat(loc.coords.latitude).toFixed(5)} 
-Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
-            [
-              {
-                text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
-              },
-              { text: "OK", onPress: () => console.log("OK Pressed") }
-            ]
-          )
+          // let alert = []
+          // for (const [key, value] of Object.entries(loc.coords)) {
+          //   alert.push(`${key}: ${value}`)
+          // }
+          // if (true)
+          //   Alert.alert(JSON.stringify(alert))
 
           this.setState({location: loc});
         }, (err) => {
@@ -307,6 +297,7 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
     }
   },
   updateGames: function() {
+    // if (this.state.auth) {
     this.state.auth.getGamesForUser(
       {order: 'recent'},
       withSuccess(games => {
@@ -314,7 +305,8 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
           games: games.filter((game) => game.is_siftr)
         });
       })
-    );
+      );
+    // }
   },
   updateFollowed: function() {
     const storeFollowed = `${RNFS.DocumentDirectoryPath}/siftrs/followed.txt`;

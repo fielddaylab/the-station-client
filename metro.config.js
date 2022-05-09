@@ -6,6 +6,9 @@
  */
 
 module.exports = {
+  resolver: {
+    assetExts: ['dae', 'jpg', 'png', 'zip']
+  },
   transformer: {
     getTransformOptions: async () => ({
       transform: {

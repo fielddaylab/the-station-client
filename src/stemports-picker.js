@@ -742,6 +742,10 @@ export class StemportsPicker extends React.Component {
     });
   }
 
+  /**
+   * uploads notes to server
+   * @returns 
+   */
   startSync() {
     analytics().logEvent('Sync',{
       station_name: this.props.game.name

@@ -781,7 +781,8 @@ export const SiftrView = createClass({
       warp: false,
       chipAnimation: new Animated.Value(0),
       trackDirection: true,
-      showHelpText: true
+      showHelpText: true,
+      cam: true
     };
   },
   getAllNotes: function(cb) {
@@ -1545,24 +1546,24 @@ export const SiftrView = createClass({
       ? ref1
       : "white";
   },
-  getGoogleZoom: function() {
-    var h, ref, ref1, ref2, ref3, w;
-    if (this.state.bounds == null) {
-      return 1;
-    }
-    w =
-      ((ref = (ref1 = this.layout) != null ? ref1.width : void 0) != null
-        ? ref
-        : 400) * 2;
-    h =
-      ((ref2 = (ref3 = this.layout) != null ? ref3.height : void 0) != null
-        ? ref2
-        : 400) * 2;
-    return fitBounds(this.state.bounds, {
-      width: w,
-      height: h
-    }).zoom;
-  },
+  // getGoogleZoom: function() {
+  //   var h, ref, ref1, ref2, ref3, w;
+  //   if (this.state.bounds == null) {
+  //     return 1;
+  //   }
+  //   w =
+  //     ((ref = (ref1 = this.layout) != null ? ref1.width : void 0) != null
+  //       ? ref
+  //       : 400) * 2;
+  //   h =
+  //     ((ref2 = (ref3 = this.layout) != null ? ref3.height : void 0) != null
+  //       ? ref2
+  //       : 400) * 2;
+  //   return fitBounds(this.state.bounds, {
+  //     width: w,
+  //     height: h
+  //   }).zoom;
+  // },
 
   commonSearchParams: function(
     filterByMap = true,
@@ -2233,6 +2234,7 @@ export const SiftrView = createClass({
           this.setState({warpCoords: coords});
         }}
         trackDirection={this.state.trackDirection}
+        cam={this.state.cam}
         showStops={this.state.showStops}
         onUpdateCircle={(centerXY, leftXY, topXY, bottomXY) => {
           this.setState({
@@ -3331,7 +3333,7 @@ export const SiftrView = createClass({
                   }} />
                   </TouchableOpacity>}
 
-                {/* toggle map pitch */}
+                {/* toggle map bird eye view */}
                 {!this.state.showStops &&
                 <TouchableOpacity onPress={() => {
                   this.setState({trackDirection: !this.state.trackDirection});
@@ -3347,6 +3349,20 @@ export const SiftrView = createClass({
                     margin: -10,
                   }} />
                   </TouchableOpacity>}
+
+                {/* debug */}
+                < TouchableOpacity onPress={() => {
+                  this.setState({ cam: !this.state.cam });
+                }} style={{
+                  borderTopWidth: 2,
+                  borderTopColor: 'white',
+                  width: 90,
+                  height: 90,
+                  margin: -10,
+                  marginTop: 0,
+                }}>
+
+                </TouchableOpacity>
               </View>
 
 

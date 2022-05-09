@@ -278,7 +278,7 @@ PODS:
     - React-Core
   - react-native-geocoder (0.5.0):
     - React
-  - react-native-geolocation (1.4.2):
+  - react-native-geolocation (2.0.2):
     - React
   - react-native-image-picker (1.1.0):
     - React
@@ -345,7 +345,7 @@ PODS:
     - Fabric
     - Firebase/Core
     - React
-  - RNFS (2.19.0):
+  - RNFS (2.20.0):
     - React-Core
   - rnmapbox-maps (10.0.0-beta.1):
     - MapboxMaps (~> 10.4.3)
@@ -566,7 +566,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-camera: b8cc03e2feec0c04403d0998e37cf519d8fd4c6f
   react-native-geocoder: 757427682892bb256f3b3745858cc90eba148a8e
-  react-native-geolocation: a7b94614afbd5fd8350e0233a2025c8228fc8041
+  react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
   react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
   react-native-netinfo: ddaca8bbb9e6e914b1a23787ccb879bc642931c9
   react-native-orientation-locker: 851f6510d8046ea2f14aa169b1e01fcd309a94ba
@@ -587,7 +587,7 @@ SPEC CHECKSUMS:
   RNFBAnalytics: 6414e9fe1f36c3074f39cd6265b3def777dbfbdb
   RNFBApp: 804b98033f45c3a3e35b56de8c894f85ef5e4388
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
-  RNFS: fc610f78fdf8bfc89a9e5cc2f898519f4dba1002
+  RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   rnmapbox-maps: 057ad3432240e69225e50f19e76d8d0f86afd7f1
   RNSVG: 8ba35cbeb385a52fd960fd28db9d7d18b4c2974f
   RNZipArchive: 9dfdaa1d1ad49a423e83df505f292e0ae8126a5d
@@ -595,6 +595,6 @@ SPEC CHECKSUMS:
   Turf: 60b93cfdc62758526bc7bf1ef191a829aeb9694d
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f
 
-PODFILE CHECKSUM: b317ae5e7195e74f10dfbc7230a812ca2dc1aeb0
+PODFILE CHECKSUM: b687aec3a1fda6cff99cd2ef90c76de966f83d4a
 
 COCOAPODS: 1.11.2
