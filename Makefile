@@ -3,6 +3,7 @@
 install:
 	rm -f src-*/*
 	yarn
+	patch-package
 	cd ios && pod install && cd ..
 
 run-android:

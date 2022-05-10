@@ -213,7 +213,7 @@ export class SiftrMap extends React.Component {
       isMapReady: false,
       legendOpen: false,
       heading: 180, 
-      idle: true
+      // idle: false
     };
   }
 
@@ -355,6 +355,7 @@ export class SiftrMap extends React.Component {
 
   camTest() {
     console.log('cam test')
+    console.log(this.theMapCamera._reactInternalFiber)
     this.theMapCamera.setCamera({
       centerCoordinate: [
         parseFloat(37),
@@ -362,8 +363,8 @@ export class SiftrMap extends React.Component {
       ],
       pitch: MAP_PITCH,
       // pitch: 0,
-      bearing: Math.random() * 360,
-      zoomLevel: 15
+      heading: Math.random() * 360,
+      zoomLevel: 22
     });
   }
 
@@ -459,8 +460,10 @@ export class SiftrMap extends React.Component {
           // followUserMode='compass'
           pitch={this.props.showStops ? 0 : MAP_PITCH}
           zoomLevel={ZOOM_LEVEL}
-        // followPitch={MAP_PITCH}
-        // followZoomLevel={ZOOM_LEVEL}
+          followPitch={MAP_PITCH}
+          followZoomLevel={ZOOM_LEVEL}
+          maxZoomLevel={ZOOM_LEVEL}
+          minZoomLevel={18}
         />
         {/* <MapboxGL.Style
         json={TestStyle}

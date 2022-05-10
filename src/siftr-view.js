@@ -3350,7 +3350,7 @@ export const SiftrView = createClass({
                   }} />
                   </TouchableOpacity>}
 
-                {/* debug */}
+                {/* debug Cam Test */}
                 < TouchableOpacity onPress={() => {
                   this.setState({ cam: !this.state.cam });
                 }} style={{
