@@ -39,6 +39,13 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>fieldday-web.wcer.wisc.edu</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 			<key>localhost</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

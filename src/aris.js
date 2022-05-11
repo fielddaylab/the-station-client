@@ -550,6 +550,7 @@ export const Auth = class Auth {
   callUnqueued(func, json, cb = (() => {})) {
     var req;
     req = new XMLHttpRequest();
+    console.log('Server Call Sent: ' + `${ARIS_URL}/json.php/v2.${func}`);
     req.open("POST", `${ARIS_URL}/json.php/v2.${func}`, true);
     req.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     this.loadSavedAuth(auth => {
@@ -580,27 +581,29 @@ export const Auth = class Auth {
       req.onload = () => {
         var ref;
         if (200 <= (ref = req.status) && ref < 400) {
+          console.log('Server Call Recieved: ' + req.responseText);
           return cb(JSON.parse(req.responseText));
         } else {
+          console.log('Server Call Error: ' +  req.status);
           return handleError(req.status);
         }
       };
       req.onerror = () => {
-        handleError("Could not connect to Siftr");
+        handleError("Server Call: Could not connect to Station Server");
       };
       req.ontimeout = () => {
-        handleError("Request timed out");
+        handleError("Server Call: Request timed out");
       };
-      req.timeout = 5000;
-      tries = 999;
+      req.timeout = 1000;
+      tries = 3;
       trySend = () => {
         if (req.readyState === req.OPENED) {
           return req.send(jsonString);
         } else {
           return cb({
-            error: "Could not connect to Siftr",
+            error: "Could not connect to Station Server",
             errorMore:
-              "Make sure you can connect to siftr.org and arisgames.org."
+              "Make sure you have a working internet connection."
           });
         }
       };
