@@ -33,6 +33,7 @@ import { SiftrViewPW, downloadGame } from "./siftr-view";
 import { withSuccess } from "./utils";
 
 import { parseUri } from "./parse-uri";
+import SplashScreen from "./splash";
 
 // YellowBox.ignoreAllLogs();//Ignore all log notifications
 
@@ -74,7 +75,7 @@ export var SiftrNative = createClass({
       // this.setState({inTutorial: true});
       // do nothing
     }).catch((err) => {
-      this.setState({inTutorial: true});
+      // this.setState({inTutorial: true});
     })
     RNFS.readFile(seenWizard, 'utf8').then((s) => {
       const res = JSON.parse(s);
@@ -590,7 +591,7 @@ export var SiftrNative = createClass({
         ).then(() =>
           RNFS.unlink(`${RNFS.DocumentDirectoryPath}/siftrs/current-quest.txt`).catch(() => null)
         ).then(() => {
-          this.setState({inTutorial: true});
+          // this.setState({inTutorial: true});
           this.exitGame(100058, 62027);
         });
       });
@@ -623,6 +624,10 @@ export var SiftrNative = createClass({
                 </SafeAreaView>
               ) : (
                 <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+                    <SplashScreen
+                      onCloseSplash={() => { this.setState({ inSplash: false }); }}
+                      inSplash={this.state.inSplash}
+                    />
                   <SiftrViewPW
                     game={this.state.game}
                     currentQuest={this.state.quest}
@@ -670,12 +675,14 @@ export var SiftrNative = createClass({
                       this.siftrView = ref;
                     }}
                     onSelect={(game, quest) =>
+                    {
                       this.setState({
                         game: null,
                         aris: false
                       }, () => {
                         this.loadGamePosition(game, {quest: quest});
                       })
+                    }
                     }
                     onReplayIntro={this.replayIntro}
                   />
@@ -706,9 +713,9 @@ export var SiftrNative = createClass({
                     this.setState({inSplash: false, inTutorial: false});
                     RNFS.writeFile(seenComic, 'true', 'utf8');
                   }}
-                    debug={() => {
-                      Alert.alert(this.state.auth)
-                    }}
+                    // debug={() => {
+                    //   Alert.alert(this.state.games)
+                    // }}
                   currentStation={this.state.reopenStation}
                   onReplayIntro={this.replayIntro}
                 />

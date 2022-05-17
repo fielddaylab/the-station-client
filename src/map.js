@@ -309,7 +309,7 @@ export class SiftrMap extends React.Component {
     }
     // if birds eye view turned off
     else if (!this.props.showStops && prevProps.showStops && this.props.trackDirection) {
-      Alert.alert(this.props.location.coords.longitude + ', ' + this.props.location.coords.latitude)
+      // Alert.alert(this.props.location.coords.longitude + ', ' + this.props.location.coords.latitude)
       if (this.theMapCamera)
       this.theMapCamera.setCamera({
         centerCoordinate: [
@@ -365,7 +365,7 @@ export class SiftrMap extends React.Component {
     const headingRadians = this.state.heading * (Math.PI / 180);
     return <React.Fragment>
 
-      <View
+      {/* <View
         style={{
           position: 'absolute',
           top: 10,
@@ -375,7 +375,7 @@ export class SiftrMap extends React.Component {
         <Text>{this.props.location.coords.longitude.toFixed(5)}</Text>
         <Text>{this.props.location.coords.latitude.toFixed(5)}</Text>
         <Text>DEBUG</Text>
-      </View>
+      </View> */}
 
 
       <MapboxGL.MapView

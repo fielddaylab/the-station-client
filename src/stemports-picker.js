@@ -835,7 +835,7 @@ export class StemportsPicker extends React.Component {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={
+          {/* <TouchableOpacity onPress={
             // this.props.onCloseSplash
             this.props.debug
           }
@@ -859,7 +859,7 @@ export class StemportsPicker extends React.Component {
             }}>
               debug
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           {/* {
             this.props.viewComic && (
               <TouchableOpacity onPress={this.props.onSkipTutorial} style={{

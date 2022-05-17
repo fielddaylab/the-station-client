@@ -798,7 +798,6 @@ export const SiftrView = createClass({
             note_id: note.note_id,
           }, cb);
         }))).then(field_data => {
-          Alert.alert(field_data)
           notes = notes.map((note, i) =>
             update(note, {field_data: {$set: field_data[i]}})
           );
