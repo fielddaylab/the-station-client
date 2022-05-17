@@ -78,7 +78,7 @@ export function loadMedia(props, cb) {
 
   function loadMediaID(media_id, size = 'url') {
     if (!parseInt(media_id)) {
-      cb(require('../web/assets/img/stemports-avatar.png'));
+      cb(require('../web/assets/img/white-square.png'));
       return;
     }
     loadGeneral(size + media_id, (useURL) => {

@@ -746,6 +746,11 @@ export class StemportsPicker extends React.Component {
       station_name: this.props.game.name
     })
     if (this.state.queueNotes == null) return;
+    if (this.state.queueNotes.length === 0) {
+      Alert.alert('Nothing to sync')
+      // Alert.alert(this.state.queueNotes)
+      return
+    }; // confirm with team
     if (this.state.syncing) return;
     this.setState({syncing: true}, () => {
       let promises = this.state.downloadedGames.map(game =>
@@ -767,7 +772,11 @@ export class StemportsPicker extends React.Component {
         this.props.onSyncNotes && this.props.onSyncNotes();
         this.setState({syncing: false});
         this.loadDownloadedGames();
-      });
+      })
+        .catch((err) => {
+          Alert.alert(err)
+          this.setState({ syncing: false });
+        });
     });
   }
 
@@ -786,17 +795,18 @@ export class StemportsPicker extends React.Component {
     if (this.props.inSplash) {
       return (
         <ImageBackground
-          source={require('../web/assets/img/splash.jpg')}
+          source={require('../web/assets/img/splash.png')}
           style={{
             flex: 1,
-            backgroundColor: 'black',
+            backgroundColor: 'white',
             alignItems: 'center',
             justifyContent: 'flex-end',
             flexDirection: 'column',
             paddingBottom: 20,
+            zIndex: 10
           }}
           imageStyle={{
-            resizeMode: 'contain',
+            resizeMode: 'cover',
           }}
         >
           <TouchableOpacity onPress={
@@ -822,6 +832,32 @@ export class StemportsPicker extends React.Component {
               fontFamily: 'LeagueSpartan-Bold',
             }}>
               Begin
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={
+            // this.props.onCloseSplash
+            this.props.debug
+          }
+            style={{
+              backgroundColor: 'white',
+              padding: 20,
+              borderRadius: 5,
+              margin: 40,
+              paddingLeft: 15,
+              paddingRight: 15,
+              shadowColor: '#5D0D0D',
+              shadowOpacity: 0.3,
+              shadowRadius: 6,
+              shadowOffset: { height: 2 },
+            }}>
+            <Text style={{
+              color: 'rgb(99,112,51)',
+              fontSize: 20,
+              textTransform: 'uppercase',
+              fontFamily: 'LeagueSpartan-Bold',
+            }}>
+              debug
             </Text>
           </TouchableOpacity>
           {/* {
@@ -1212,9 +1248,9 @@ export class StemportsPicker extends React.Component {
                   </MapboxGL.PointAnnotation>
                 )
               }
-              <MapboxGL.UserLocation
-                visible={false}
-              />
+              {/* <MapboxGL.UserLocation
+                visible={true}
+              /> */}
               <MapboxGL.Style
                 json={TestStyle}
               />
@@ -1278,16 +1314,16 @@ export class StemportsPicker extends React.Component {
 
       return (
         <ImageBackground
-          source={require('../web/assets/img/station-bg.jpg')}
+          source={require('../web/assets/img/splash.png')}
           style={{
             flex: 1,
-            backgroundColor: 'black',
+            backgroundColor: 'white',
             alignItems: 'center',
             justifyContent: 'flex-end',
             flexDirection: 'column',
           }}
           imageStyle={{
-            resizeMode: 'contain',
+            resizeMode: 'cover',
           }}
         >
           <View style={{flex: 1, margin: 5}}>

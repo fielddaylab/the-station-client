@@ -798,6 +798,7 @@ export const SiftrView = createClass({
             note_id: note.note_id,
           }, cb);
         }))).then(field_data => {
+          Alert.alert(field_data)
           notes = notes.map((note, i) =>
             update(note, {field_data: {$set: field_data[i]}})
           );
@@ -3300,7 +3301,7 @@ export const SiftrView = createClass({
                   }}
                   style={{
                   }}>
-                  <Image source={require('../web/assets/img/stemports-help.png')
+                  <Image source={require('../web/assets/img/help.png')
                   } style={{
                     width: 90,
                     height: 90,
@@ -3320,8 +3321,8 @@ export const SiftrView = createClass({
                   borderTopColor: 'white'
                 }}>
                   <Image source={this.state.showStops
-                    ? require('../web/assets/img/icon-returntoground.png')
-                    : require('../web/assets/img/icon-flight.png')
+                      ? require('../web/assets/img/zoom-in.png')
+                      : require('../web/assets/img/zoom-out.png')
                   } style={{
                     width: 90,
                     height: 90,
@@ -3415,10 +3416,10 @@ export const SiftrView = createClass({
                           onPress={this.startCreate}
                         >
                           <Image
-                            source={require('../web/assets/img/stemports-plus.png')}
+                          source={require('../web/assets/img/observation-add.png')}
                             style={{
-                              width: 122 * 0.5,
-                              height: 124 * 0.5,
+                              width: 122,
+                              height: 124,
                             }}
                           />
                         </TouchableOpacity>

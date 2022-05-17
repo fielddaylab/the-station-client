@@ -139,21 +139,21 @@ export var SiftrNative = createClass({
         this.watchID = Geolocation.watchPosition((loc) => {
 
 
-          if (!true)
-          Alert.alert(
-            "DEBUG",
-            loc,
-            `Lat:${Number.parseFloat(loc.coords.latitude).toFixed(5)} 
-Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
-            [
-              {
-                text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
-              },
-              { text: "OK", onPress: () => console.log("OK Pressed") }
-            ]
-          )
+//           if (!true)
+//           Alert.alert(
+//             "DEBUG",
+//             loc,
+//             `Lat:${Number.parseFloat(loc.coords.latitude).toFixed(5)} 
+// Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
+//             [
+//               {
+//                 text: "Cancel",
+//                 onPress: () => console.log("Cancel Pressed"),
+//                 style: "cancel"
+//               },
+//               { text: "OK", onPress: () => console.log("OK Pressed") }
+//             ]
+//           )
 
           this.setState({location: loc});
         }, (err) => {
@@ -186,6 +186,11 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
       navigator.geolocation.clearWatch(this.watchID);
     }
     Orientation.unlockAllOrientations();
+  },
+  pause: function (ms = 2000) {
+    setTimeout(() => {
+      Alert.alert('done')
+    }, ms);
   },
   parseURL: function(url) {
     var auth,
@@ -244,6 +249,9 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
           },
           withSuccess(games => {
             if (games.length === 1) {
+
+              this.pause()
+
               this.setState({
                 game: games[0]
               });
@@ -257,8 +265,11 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
           },
           withSuccess(game => {
             if (game != null) {
+
+              this.pause()
+
               this.setState({
-                game: games[0]
+                game: this.state.games[0]
               });
             }
           })
@@ -278,6 +289,7 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
         game_id: siftr_id
       },
       withSuccess(game => {
+        this.pause()
         this.setState({
           game: game,
           aris: aris,
@@ -398,6 +410,7 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
           games: null,
           followed: null
         });
+
         if (newAuth.authToken != null) {
           analytics().logEvent("login", {
             username: newAuth.authToken.username,
@@ -693,6 +706,9 @@ Long:${Number.parseFloat(loc.coords.longitude).toFixed(5)}`,
                     this.setState({inSplash: false, inTutorial: false});
                     RNFS.writeFile(seenComic, 'true', 'utf8');
                   }}
+                    debug={() => {
+                      Alert.alert(this.state.auth)
+                    }}
                   currentStation={this.state.reopenStation}
                   onReplayIntro={this.replayIntro}
                 />

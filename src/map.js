@@ -286,6 +286,8 @@ export class SiftrMap extends React.Component {
       let minLongitude = Math.min(...(allCoordinates.map(x => x.longitude)));
       let maxLongitude = Math.max(...(allCoordinates.map(x => x.longitude)));
 
+      // Alert.alert('birdie')
+
       // define bounding box
       const stopBounds = {
         ne: [maxLongitude, maxLatitude],
@@ -305,12 +307,21 @@ export class SiftrMap extends React.Component {
         animationDuration: CAMERA_ANIMATION_DURATION,
       });
     }
+    // if birds eye view turned off
     else if (!this.props.showStops && prevProps.showStops && this.props.trackDirection) {
+      Alert.alert(this.props.location.coords.longitude + ', ' + this.props.location.coords.latitude)
+      if (this.theMapCamera)
       this.theMapCamera.setCamera({
+        centerCoordinate: [
+          parseFloat(this.props.location.coords.longitude),
+          parseFloat(this.props.location.coords.latitude),
+        ],
         pitch: MAP_PITCH,
-        heading: 0,
+        heading: this.props.location.coords.heading,
         minZoomLevel: 0,
-        animationDuration: CAMERA_ANIMATION_DURATION,
+        animationDuration: 0,
+        followUserLocation: true,
+        followUserMode: 'compass'
       });
     }
     // if in warp mode but not bird eye view
@@ -361,8 +372,9 @@ export class SiftrMap extends React.Component {
           right: 10,
           zIndex: 10,
         }}>
-        {/* <Text>{this.state.heading.toFixed(2)}</Text>
-        <Text>Debug</Text> */}
+        <Text>{this.props.location.coords.longitude.toFixed(5)}</Text>
+        <Text>{this.props.location.coords.latitude.toFixed(5)}</Text>
+        <Text>DEBUG</Text>
       </View>
 
 
@@ -397,34 +409,35 @@ export class SiftrMap extends React.Component {
       }}
       compassEnabled={false}
     >
-      <MapboxGL.Camera
-        ref={r => (this.theMapCamera = r)}
-        defaultSettings={{
-          zoomLevel: ZOOM_LEVEL,
-          centerCoordinate: (this.props.location && [
-            parseFloat(this.props.location.coords.longitude),
-            parseFloat(this.props.location.coords.latitude),
-          ]),
-          pitch: MAP_PITCH,
-        }}
-          animationDuration={CAMERA_ANIMATION_DURATION}
-        centerCoordinate={this.props.showStops ? undefined
-          : this.props.warp ? (this.props.location && [
+        <MapboxGL.Camera
+          ref={r => (this.theMapCamera = r)}
+          defaultSettings={{
+            zoomLevel: ZOOM_LEVEL,
+            centerCoordinate: (this.props.location && [
               parseFloat(this.props.location.coords.longitude),
               parseFloat(this.props.location.coords.latitude),
-              ])
-          : undefined /* use followUserLocation */
-        }
-        followUserLocation={!(this.props.showStops || this.props.warp)}
-        followUserMode={this.props.trackDirection ? 'compass' : 'normal'}
+            ]),
+            pitch: MAP_PITCH,
+          }}
+          animationDuration={CAMERA_ANIMATION_DURATION}
+          centerCoordinate={this.props.showStops ? undefined
+            : this.props.warp ? (this.props.location && [
+              parseFloat(this.props.location.coords.longitude),
+              parseFloat(this.props.location.coords.latitude),
+            ])
+              : undefined /* use followUserLocation */
+          }
+          followUserLocation={!(this.props.showStops || this.props.warp)}
+          followUserMode={this.props.trackDirection ? 'compass' : 'normal'}
           onUserTrackingModeChange={() => {
 
           }}
-        pitch={this.props.showStops ? 0 : MAP_PITCH}
+          // pitch={this.props.showStops ? 0 : MAP_PITCH}
           zoomLevel={ZOOM_LEVEL}
-        // followPitch={MAP_PITCH}
-        // followZoomLevel={ZOOM_LEVEL}
-      />
+          // followHeading={0}
+          followPitch={MAP_PITCH}
+          followZoomLevel={ZOOM_LEVEL}
+        />
       <MapboxGL.Style
         json={TestStyle}
       />
@@ -489,26 +502,50 @@ export class SiftrMap extends React.Component {
               flexDirection: 'column',
               alignItems: 'center',
             }}>
-              <ModelView
-                source={{
-                  zip: url,
-                }}
-                style={{
-                  width: 200,
-                  height: 180,
-                }}
-                autoPlay={true}
-                camera={{
-                  position: {
-                    x: this.props.trackDirection ? 0 : Math.sin(headingRadians) * -2,
-                    y: 0.9,
-                    z: this.props.trackDirection ? -2 : Math.cos(headingRadians) * 2,
-                  },
-                  lookAt: {
-                    x: 0, y: 0.8, z: 0,
-                  },
-                }}
-              />
+              {
+                this.props.trackDirection ?
+                  <ModelView
+                    source={{
+                      zip: url,
+                    }}
+                    style={{
+                      width: 200,
+                      height: 180,
+                    }}
+                    autoPlay={true}
+                    camera={{
+                      position: {
+                        x: 0,
+                        y: 0.9,
+                        z: -2,
+                      },
+                      lookAt: {
+                        x: 0, y: 0.8, z: 0,
+                      },
+                    }}
+                  />
+                  :
+                  <ModelView
+                    source={{
+                      zip: url,
+                    }}
+                    style={{
+                      width: 200,
+                      height: 180,
+                    }}
+                    autoPlay={true}
+                    camera={{
+                      position: {
+                        x: Math.sin(headingRadians) * -2,
+                        y: 0.9,
+                        z: Math.cos(headingRadians) * 2,
+                      },
+                      lookAt: {
+                        x: 0, y: 0.8, z: 0,
+                      },
+                    }}
+                  />
+              }
             </View>
           }
         />

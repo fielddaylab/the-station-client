@@ -1379,6 +1379,7 @@ export const CreateData = createClass({
                   const missingField = currentFieldPage.find(field => {
                     let canAdvance = true;
                     if (field.required) {
+                      // Alert.alert(field)
                       if (field.field_type === 'TEXT' || field.field_type === 'TEXTAREA') {
                         const match = field_data.filter(data => data.field_id === field.field_id);
                         if (match.length === 0 || !(match[0].field_data)) {

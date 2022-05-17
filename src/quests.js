@@ -378,7 +378,7 @@ export class QuestComplete extends React.Component {
             alignItems: 'stretch',
             overflow: 'hidden',
           }}>
-            <ImageBackground source={require('../web/assets/img/quest-complete-photo.jpg')} style={{
+            <ImageBackground source={require('../web/assets/img/quest-complete.jpg')} style={{
               flex: 1,
               resizeMode: 'cover',
             }} />
