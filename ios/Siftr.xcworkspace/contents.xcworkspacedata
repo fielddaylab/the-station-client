@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Launch Screen.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:/Users/yuheng/Files/the-station-client/ios/Station Maine.xcodeproj">
    </FileRef>
    <FileRef

@@ -20,6 +20,7 @@
 		5309CEDF25F1D1C9008E4F57 /* LeagueSpartan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5309CEDB25F1D1C9008E4F57 /* LeagueSpartan-Bold.ttf */; };
 		530E0DFD22E65A1800C27576 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 530E0DFC22E65A1800C27576 /* Images.xcassets */; };
 		53391B9022E767E800B796AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53391B8F22E767E800B796AE /* GoogleService-Info.plist */; };
+		58A8F8F2282C7E78008BA164 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A8F8F1282C7E78008BA164 /* Launch Screen.storyboard */; };
 		87798EEEFA27A81B7DEA60A4 /* libPods-Station Maine-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED9554761AD7BE05120DA068 /* libPods-Station Maine-tvOS.a */; };
 		BD8B7A1589F020B8365F7CC2 /* libPods-Station Maine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8214CF92FC4310D0862C6756 /* libPods-Station Maine.a */; };
 		EAE3DD03C124D70E5045EA97 /* libPods-Station MaineTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78412D0CE7602C975B61709A /* libPods-Station MaineTests.a */; };
@@ -65,6 +66,7 @@
 		5309CEDB25F1D1C9008E4F57 /* LeagueSpartan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LeagueSpartan-Bold.ttf"; path = "../../assets/fonts/LeagueSpartan-Bold.ttf"; sourceTree = "<group>"; };
 		530E0DFC22E65A1800C27576 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		53391B8F22E767E800B796AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Siftr/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		58A8F8F1282C7E78008BA164 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5D26AB0784FEE86FCDA60C4C /* Pods-Station MaineTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Station MaineTests.release.xcconfig"; path = "Target Support Files/Pods-Station MaineTests/Pods-Station MaineTests.release.xcconfig"; sourceTree = "<group>"; };
 		78412D0CE7602C975B61709A /* libPods-Station MaineTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Station MaineTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E098A6C22051875169E77E4 /* Pods-Siftr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Siftr.release.xcconfig"; path = "Target Support Files/Pods-Siftr/Pods-Siftr.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				58A8F8F1282C7E78008BA164 /* Launch Screen.storyboard */,
 				13B07FAE1A68108700A75B9A /* Siftr */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SiftrTests */,
@@ -382,6 +385,7 @@
 			files = (
 				530E0DFD22E65A1800C27576 /* Images.xcassets in Resources */,
 				53391B9022E767E800B796AE /* GoogleService-Info.plist in Resources */,
+				58A8F8F2282C7E78008BA164 /* Launch Screen.storyboard in Resources */,
 				5309CEDF25F1D1C9008E4F57 /* LeagueSpartan-Bold.ttf in Resources */,
 				5309CEDD25F1D1C9008E4F57 /* OpenSans-SemiBold.ttf in Resources */,
 				5309CEDC25F1D1C9008E4F57 /* LeagueSpartan-Medium.ttf in Resources */,
