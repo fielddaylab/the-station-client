@@ -6,7 +6,7 @@ import update from "immutability-helper";
 import { uploadImage } from "./photos";
 
 // const ARIS_URL = "https://thestationmaine.com/server/";
-const ARIS_URL = "https://fieldday-web.wcer.wisc.edu/stemports/server/";
+const ARIS_URL = "https://fieldday-web.wcer.wisc.edu/station-vanderbilt/server/";
 
 export const Game = class Game {
   constructor(json) {
